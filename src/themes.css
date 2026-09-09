@@ -31,7 +31,6 @@
 }
 
 [data-theme='light'] .site-brand { color: var(--light-green); }
-[data-theme='light'] .site-brand i { background: #b4b4b4; }
 [data-theme='light'] .site-header nav a { color: var(--light-text); }
 [data-theme='light'] .site-header nav b,
 [data-theme='light'] .site-header nav a.active { color: var(--light-purple); }

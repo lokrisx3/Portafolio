@@ -25,6 +25,7 @@ const projects = [
     type: 'EXTENSIÓN DE CHROME',
     title: 'PUDUTAROT',
     artwork: 'tarot',
+    url: 'https://chromewebstore.google.com/detail/nfeefcdjlmaoapbgenolnokcbaeleijp?utm_source=item-share-cb',
     description: 'Creé y publiqué una extensión de Chrome para seleccionar cartas de tarot y consultar sus significados.',
     stack: ['HTML', 'JavaScript', 'JSON', 'CSS', 'IA'],
     accent: 'green',
@@ -61,6 +62,11 @@ function Projects() {
             <ul className="project-stack" aria-label={`Tecnologías de ${project.title}`}>
               {project.stack.map((technology) => <li key={technology}><TechSymbol name={technology} />{technology}</li>)}
             </ul>
+            {project.url && (
+              <a className="project-link" href={project.url} target="_blank" rel="noopener noreferrer">
+                Ver en Chrome Web Store <span aria-hidden="true">↗</span>
+              </a>
+            )}
           </article>
         ))}
       </div>

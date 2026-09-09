@@ -60,15 +60,6 @@ body {
     letter-spacing: 2px
 }
 
-.site-brand i {
-    display: inline-block;
-    width: 157px;
-    height: 37px;
-    margin-left: 11px;
-    vertical-align: middle;
-    background: #00040a
-}
-
 .site-header nav {
     display: flex;
     flex: 1;
@@ -429,10 +420,6 @@ main>section:not(.about-section) h2 {
 @media(max-width:850px) {
     .site-brand {
         width: auto
-    }
-
-    .site-brand i {
-        display: none
     }
 
     .site-header nav {
@@ -1023,6 +1010,26 @@ main>section:not(.about-section) h2 {
     color: #bfc2c8;
     font-size: 11px;
     line-height: 1.65
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: var(--project-color);
+    font-size: 12px;
+    font-weight: 700;
+    text-underline-offset: 4px;
+}
+
+.project-link:hover {
+    text-decoration-thickness: 2px;
+}
+
+.project-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 5px;
 }
 
 .project-stack {

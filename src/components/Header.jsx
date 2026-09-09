@@ -32,7 +32,7 @@ function Header() {
   return (
     <header className="site-header" id="inicio">
       <a className="site-brand" href="#inicio" aria-label="Ir al inicio">
-        <span>&gt;_</span><i />
+        <span>&gt;_</span>
       </a>
 
       <button
