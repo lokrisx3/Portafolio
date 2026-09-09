@@ -1,0 +1,56 @@
+.projects-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-artwork {
+  --art-surface: #141c2e;
+  --art-muted: #8794ad;
+  --art-soft: #202d43;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid #48506a;
+  background: radial-gradient(ellipse at center, #20273e, #0d1322);
+}
+
+.project-artwork__bar {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #48506a;
+  background: var(--art-surface);
+}
+.project-artwork__bar span { width: 6px; height: 6px; background: var(--project-color); }
+.project-artwork__bar span:nth-child(2) { background: #d4a855; }
+.project-artwork__bar span:nth-child(3) { background: #65b97a; }
+.project-artwork svg { display: block; width: 100%; height: auto; aspect-ratio: 400 / 210; }
+.project-artwork svg :is(path, circle, rect) { stroke-width: 2; stroke-linejoin: round; }
+.project-artwork .art-panel { fill: var(--art-surface); stroke: var(--art-muted); }
+.project-artwork .art-line { fill: none; stroke: var(--art-muted); }
+.project-artwork .art-muted { fill: none; stroke: var(--art-muted); stroke-width: 3; }
+.project-artwork .art-accent { fill: none; stroke: var(--project-color); stroke-width: 3; }
+.project-artwork .art-soft { fill: var(--art-soft); stroke: var(--art-muted); }
+.project-artwork .art-map { fill: none; stroke: var(--art-muted); opacity: .25; }
+.project-artwork .art-route { stroke-width: 5; stroke-dasharray: 8 4; }
+.project-artwork .art-pin { fill: var(--project-color); stroke: var(--project-color); }
+.project-artwork .art-label { fill: var(--project-color); font: 36px 'VT323', monospace; }
+.project-artwork__caption {
+  display: block;
+  padding: 0 10px 9px;
+  color: var(--art-muted);
+  font: 12px 'VT323', monospace;
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+[data-theme='light'] .project-artwork {
+  --art-surface: #d3d3d3;
+  --art-muted: #555d66;
+  --art-soft: #b9bfc6;
+  background: linear-gradient(135deg, #aeb8c2, #c9cdd1);
+  border-color: #808080 #efefef #efefef #808080;
+}
+[data-theme='light'] .project-artwork__bar { background: #b5b5b5; border-color: #808080; }
+
+@media (max-width: 600px) {
+  .projects-grid { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,8 +1,12 @@
+import TechSymbol from '../components/TechSymbol.jsx'
+import ProjectArtwork from '../components/ProjectArtwork.jsx'
+
 const projects = [
   {
     number: '01',
     type: 'APLICACIÓN WEB',
     title: 'VISIUM',
+    artwork: 'visium',
     description: 'Participé como desarrollador Full Stack y Scrum Master en una plataforma de gestión para ópticas, con módulos de pacientes, fichas clínicas y consultas.',
     stack: ['React', 'Java', 'Spring Boot', 'PostgreSQL', 'IA'],
     accent: 'purple',
@@ -11,6 +15,7 @@ const projects = [
     number: '02',
     type: 'AUTOMATIZACIÓN',
     title: 'F29DOWNLOADER',
+    artwork: 'downloader',
     description: 'Desarrollé una aplicación de escritorio para automatizar la navegación y descarga de Formularios 29 desde la plataforma del SII.',
     stack: ['C#', 'Windows Forms', 'Playwright', 'IA'],
     accent: 'cyan',
@@ -19,6 +24,7 @@ const projects = [
     number: '03',
     type: 'EXTENSIÓN DE CHROME',
     title: 'PUDUTAROT',
+    artwork: 'tarot',
     description: 'Creé y publiqué una extensión de Chrome para seleccionar cartas de tarot y consultar sus significados.',
     stack: ['HTML', 'JavaScript', 'JSON', 'CSS', 'IA'],
     accent: 'green',
@@ -27,6 +33,7 @@ const projects = [
     number: '04',
     type: 'FUNCIONALIDAD WEB',
     title: 'SISTEMA DE TRACKING GPS',
+    artwork: 'gps',
     description: 'Implementé un sistema de seguimiento GPS para Automaster.',
     stack: ['PHP', 'JavaScript', 'CSS', 'MySQL'],
     accent: 'purple',
@@ -48,7 +55,7 @@ function Projects() {
         {projects.map((project) => (
           <article className={`project-card project-card--${project.accent}`} key={project.number}>
             <div className="project-card__topline"><span>[{project.number}]</span><span>{project.type}</span></div>
-            <div className="project-preview" aria-hidden="true"><i /><i /><i /><b>{project.number}</b><em /><small /></div>
+            <ProjectArtwork kind={project.artwork} />
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             <ul className="project-stack" aria-label={`Tecnologías de ${project.title}`}>
@@ -62,4 +69,3 @@ function Projects() {
 }
 
 export default Projects
-import TechSymbol from '../components/TechSymbol.jsx'
