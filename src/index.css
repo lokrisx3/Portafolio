@@ -657,7 +657,8 @@ main>section:not(.about-section) h2 {
 .professional-intro {
     display: grid;
     grid-template-columns: minmax(260px, .8fr) minmax(300px, 1.2fr);
-    gap: clamp(24px, 7vw, 100px);
+    row-gap: 20px;
+    column-gap: clamp(24px, 7vw, 100px);
     align-items: end
 }
 

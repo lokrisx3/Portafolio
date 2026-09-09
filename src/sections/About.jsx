@@ -4,6 +4,7 @@ import laptop from '../assets/pixel-laptop-profile.png'
 import realProfile from '../assets/foto-perfil-cut.png'
 import pixelProfile from '../assets/foto-perfil-pixel.png'
 import nightSpaceStudio from '../assets/night-space-studio.png'
+import daylightStudio from '../assets/daylight-studio.png'
 
 function PixelLaptop() {
   const [imageMode, setImageMode] = useState('generative')
@@ -25,7 +26,7 @@ function PixelLaptop() {
 
 function About() {
   return (
-    <section className="about-section" aria-labelledby="about-title" style={{ '--studio-scene': `url(${nightSpaceStudio})` }}>
+    <section className="about-section" aria-labelledby="about-title" style={{ '--studio-scene': `url(${nightSpaceStudio})`, '--daylight-scene': `url(${daylightStudio})` }}>
       <div className="about-copy">
         <p className="section-label">HOLA, SOY</p>
         <h1 id="about-title">CRISTIAN FRITZ<br />SEPÚLVEDA<span className="cursor" /></h1>
