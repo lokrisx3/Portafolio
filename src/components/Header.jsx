@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import WeatherClock from './WeatherClock.jsx'
+import PuduRunner from './PuduRunner.jsx'
 import { getInitialTheme, saveTheme } from '../theme.js'
 
 const navigation = [
@@ -11,6 +12,7 @@ const navigation = [
 ]
 
 function Header() {
+  const [runnerOpen, setRunnerOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [theme, setTheme] = useState(getInitialTheme)
   const themeTransition = useRef(null)
@@ -31,9 +33,10 @@ function Header() {
 
   return (
     <header className="site-header" id="inicio">
-      <a className="site-brand" href="#inicio" aria-label="Ir al inicio">
+      <button className="site-brand runner-launch" type="button" onClick={() => setRunnerOpen(true)} aria-label="Jugar Pudú Runner" title="¿Una pausa? Juega Pudú Runner">
         <span>&gt;_</span>
-      </a>
+      </button>
+      {runnerOpen && <PuduRunner onClose={() => setRunnerOpen(false)} />}
 
       <button
         className="menu-toggle"

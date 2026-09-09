@@ -1,0 +1,27 @@
+.runner-launch { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
+.runner-launch:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.pudu-dialog { width: min(860px, calc(100% - 24px)); max-height: calc(100dvh - 32px); overflow: auto; padding: 24px; border: 1px solid #47665a; color: #eee9d8; background: #0b171c; box-shadow: 0 24px 100px #0009; font-family: 'Space Mono', monospace; }
+.pudu-dialog::backdrop { background: #02050bd9; backdrop-filter: blur(6px); }
+.pudu-top, .pudu-heading, .pudu-scores, .pudu-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.pudu-top { color: #93b4a4; font-size: 11px; letter-spacing: 2px; }
+.pudu-top button { background: transparent; color: #eee9d8; border: 1px solid #47665a; width: 36px; height: 36px; cursor: pointer; }
+.pudu-heading { margin: 18px 0 24px; }
+.pudu-heading p { color: #93b4a4; font-size: 10px; letter-spacing: 1px; }
+.pudu-heading h2 { margin: 0; font-family: 'VT323', monospace; font-size: clamp(36px, 7vw, 60px); font-weight: 400; line-height: 1; }
+.pudu-heading h2 span { color: #8adc80; }
+.pudu-badge { border: 1px solid #47665a; padding: 6px 8px; color: #8adc80; font-size: 9px; }
+.pudu-scores { font-size: 11px; color: #93b4a4; margin-bottom: 12px; flex-wrap: wrap; }
+.pudu-scores b { color: #e5e8b0; margin-left: 8px; }
+.pudu-stage { position: relative; border: 1px solid #47665a; }
+.pudu-stage canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; touch-action: manipulation; cursor: pointer; }
+.pudu-stage canvas:focus-visible { outline: 2px solid #8adc80; outline-offset: 2px; }
+.pudu-overlay { position: absolute; inset: 0 0 auto; padding: 24px 12px; text-align: center; background: linear-gradient(#09141dee, #09141d00); pointer-events: none; }
+.pudu-overlay strong { display: block; color: #e5e8b0; font-family: 'VT323', monospace; font-size: clamp(20px, 4vw, 32px); }
+.pudu-overlay span { display: block; margin-top: 6px; font-size: 11px; }
+.pudu-controls { margin-top: 20px; flex-wrap: wrap; }
+.pudu-controls p { font-size: 11px; color: #93b4a4; }
+.pudu-controls kbd { font: inherit; border: 1px solid #47665a; padding: 3px 5px; }
+.pudu-controls button { padding: 12px 18px; border: 0; color: #0b171c; background: #8adc80; font: 700 12px 'Space Mono', monospace; cursor: pointer; }
+.pudu-controls button:hover { background: #b1efa8; }
+.pudu-footnote { margin: 20px 0 0; font-size: 10px; color: #93b4a4; }
+@media (max-width: 500px) { .pudu-dialog { padding: 16px; } .pudu-badge { display: none; } .pudu-overlay { padding-top: 10px; } .pudu-overlay span { font-size: 9px; } .pudu-controls { gap: 6px; } }
