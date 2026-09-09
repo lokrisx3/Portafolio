@@ -7,7 +7,9 @@ import nightSpaceStudio from '../assets/night-space-studio.png'
 import daylightStudio from '../assets/daylight-studio.png'
 
 function PixelLaptop() {
-  const [imageMode, setImageMode] = useState('generative')
+  const [imageMode, setImageMode] = useState('real')
+  const toggleProfile = () => setImageMode((mode) => mode === 'real' ? 'generative' : 'real')
+  const nextProfileLabel = imageMode === 'real' ? 'Mostrar retrato pixel art' : 'Mostrar foto real'
 
   return <div className="desk-scene" aria-label="Notebook con foto de perfil de Cristian">
     <img className="pixel-mug" src={coffeeMug} alt="Taza de café pixel art" />
@@ -15,11 +17,12 @@ function PixelLaptop() {
       <img className="pixel-laptop" src={laptop} alt="Notebook pixel art" />
       <img
         className="real-profile-on-screen"
+        data-image-mode={imageMode}
         src={imageMode === 'real' ? realProfile : pixelProfile}
         alt={imageMode === 'real' ? 'Foto real de Cristian Fritz Sepúlveda' : 'Retrato pixel art de Cristian Fritz Sepúlveda'}
       />
-      <button className="screen-arrow screen-arrow-left" type="button" onClick={() => setImageMode('real')} aria-label="Mostrar foto real" aria-pressed={imageMode === 'real'}>‹</button>
-      <button className="screen-arrow screen-arrow-right" type="button" onClick={() => setImageMode('generative')} aria-label="Mostrar retrato generativo" aria-pressed={imageMode === 'generative'}>›</button>
+      <button className="screen-arrow screen-arrow-left" type="button" onClick={toggleProfile} aria-label={nextProfileLabel}>‹</button>
+      <button className="screen-arrow screen-arrow-right" type="button" onClick={toggleProfile} aria-label={nextProfileLabel}>›</button>
     </div>
   </div>
 }

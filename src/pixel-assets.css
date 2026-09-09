@@ -63,6 +63,10 @@
   image-rendering: pixelated;
 }
 
+.real-profile-on-screen[data-image-mode='real'] {
+  image-rendering: auto;
+}
+
 .screen-arrow {
   position: absolute;
   z-index: 2;
