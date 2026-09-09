@@ -21,48 +21,15 @@ React 19, JavaScript, Vite 8 y CSS. ESLint para análisis estático y GitHub Act
 
 Los iconos tecnológicos se cargan desde Skill Icons y las tipografías desde Google Fonts. Estos recursos y la consulta del clima requieren conexión a Internet.
 
-## Ejecutar localmente
-
-Utiliza Node.js 24, la misma versión configurada en el workflow, y npm.
-
-Desde la carpeta del repositorio:
-
-```sh
-npm ci
-npm run dev
-```
-
-Abre la dirección que indique Vite en la terminal. La ruta base actual es `/Portafolio/`, por lo que normalmente será `http://localhost:5173/Portafolio/`.
-
-La aplicación no requiere un backend propio ni variables de entorno para ejecutarse.
-
-## Comandos
-
-| Comando | Función |
-| --- | --- |
-| `npm run dev` | Inicia el servidor de desarrollo. |
-| `npm run lint` | Revisa el código con ESLint. |
-| `npm run build` | Genera la versión de producción en `dist/`. |
-| `npm run preview` | Sirve la compilación localmente para revisarla. |
-
-Para revisar la versión de producción:
-
-```sh
-npm run lint
-npm run build
-npm run preview
-```
-
-Abre `http://localhost:4173/Portafolio/` o la dirección indicada en la terminal. `preview` se utiliza para verificación local.
 
 ## Proyectos presentados
 
-| Proyecto | Descripción |
-| --- | --- |
-| Visium | Plataforma de gestión para ópticas; participación como desarrollador Full Stack y Scrum Master. |
-| F29Downloader | Aplicación de escritorio para automatizar la descarga de Formularios 29 desde el SII. |
-| Pudutarot | Extensión de Chrome para seleccionar cartas de tarot y consultar sus significados. |
-| Sistema de tracking GPS | Funcionalidad de seguimiento GPS implementada para Automaster. |
+| Proyecto                | Descripción                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------- |
+| Visium                  | Plataforma de gestión para ópticas; participación como desarrollador Full Stack y Scrum Master. |
+| F29Downloader           | Aplicación de escritorio para automatizar la descarga de Formularios 29 desde el SII.           |
+| Pudutarot               | Extensión de Chrome para seleccionar cartas de tarot y consultar sus significados.              |
+| Sistema de tracking GPS | Funcionalidad de seguimiento GPS implementada para Automaster.                                  |
 
 Este repositorio contiene el portafolio que presenta estos trabajos, no el código de las cuatro aplicaciones.
 
