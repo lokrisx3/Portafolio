@@ -6,7 +6,6 @@ const navigation = [
   { label: 'SOBRE MÍ', target: 'sobre-mi' },
   { label: 'PROYECTOS', target: 'proyectos' },
   { label: 'HABILIDADES', target: 'habilidades' },
-  { label: 'CONTACTO', target: 'contacto' },
 ]
 
 function Header() {

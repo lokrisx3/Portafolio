@@ -31,16 +31,19 @@ function About() {
         <h1 id="about-title">CRISTIAN FRITZ<br />SEPÚLVEDA<span className="cursor" /></h1>
         <p className="about-role">DESARROLLADOR FULL STACK<br /><span>ANALISTA PROGRAMADOR</span></p>
         <p className="about-description">
-          Más de 5 años de experiencia en desarrollo de software,<br />automatización, QA y soluciones web eficientes.<br />Apasionado por crear productos que generan impacto real.
+          Más de 5 años de experiencia profesional en TI,<br />con foco en desarrollo de software, automatización,<br />monitoreo y QA de aplicaciones web.
         </p>
 
-        <div className="about-actions">
-          <a className="primary-action" href="#proyectos">
-            › VER PROYECTOS
-          </a>
-          <a className="secondary-action" href="#contacto">
-            › CONTACTAR
-          </a>
+        <div className="hero-tech-strip">
+          <img
+            src="https://skillicons.dev/icons?i=java,js,python,cs,php,html,css,react,spring,django,bootstrap,postgres,mysql,selenium,git,github,docker,linux&theme=dark&perline=18"
+            alt="Java, JavaScript, Python, C#, PHP, HTML, CSS, React, Spring Boot, Django, Bootstrap, PostgreSQL, MySQL, Selenium, Git, GitHub, Docker y Linux"
+          />
+        </div>
+
+        <div className="profile-links" aria-label="Perfiles profesionales">
+          <a href="https://github.com/lokrisx3" target="_blank" rel="noreferrer"><span aria-hidden="true">GH</span> GITHUB</a>
+          <a href="https://www.linkedin.com/in/cfritzsepulveda/" target="_blank" rel="noreferrer"><span aria-hidden="true">in</span> LINKEDIN</a>
         </div>
       </div>
 

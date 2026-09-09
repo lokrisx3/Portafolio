@@ -1,13 +1,14 @@
 const strengths = [
-  ['01', 'DESARROLLO FULL STACK', 'Construyo soluciones web de punta a punta, desde la interfaz hasta la lógica y la integración de servicios.'],
-  ['02', 'AUTOMATIZACIÓN Y QA', 'Me enfoco en flujos confiables, validación de calidad y mejoras que reduzcan trabajo repetitivo.'],
-  ['03', 'PRODUCTOS CON IMPACTO', 'Transformo necesidades de negocio en experiencias digitales claras, eficientes y mantenibles.'],
+  ['01', 'DESARROLLO FULL STACK', 'Desarrollo y mantengo aplicaciones web, con funcionalidades Front-End y Back-End.'],
+  ['02', 'AUTOMATIZACIÓN Y QA', 'Automatizo eventos de usuario para monitoreo y control de calidad de sitios web y aplicaciones móviles.'],
+  ['03', 'GESTIÓN DE INCIDENCIAS', 'Resuelvo incidentes técnicos, documento errores funcionales y requerimientos, y gestiono incidencias en Jira.'],
 ]
 
 const experience = [
-  ['+5 AÑOS', 'EXPERIENCIA EN SOFTWARE', 'Desarrollo de aplicaciones y soluciones orientadas a resolver problemas reales.'],
-  ['ENFOQUE', 'CALIDAD Y EFICIENCIA', 'Automatización, QA y mejora continua como parte del proceso de entrega.'],
-  ['PERFIL', 'ANALISTA PROGRAMADOR', 'Visión técnica y funcional para acompañar un producto desde la idea hasta su evolución.'],
+  ['ABR–AGO 2026', 'GENERATION CHILE · DESARROLLADOR FULL STACK', 'Proyecto Visium: desarrollo de módulos de pacientes, fichas clínicas y consultas con Java, Spring Boot, PostgreSQL y React. Participación como Scrum Master.'],
+  ['NOV 2022–ABR 2024', 'ATENTUS · DESARROLLADOR JUNIOR', 'Desarrollo y mantenimiento de 5 sitios web con React, JavaScript, Python y Django. Gestión de datos en PostgreSQL y control de versiones con Git en Linux.'],
+  ['SEP 2019–NOV 2022', 'ATENTUS · INGENIERO ATENCIÓN AL CLIENTE', 'Más de 20 automatizaciones con Selenium y JavaScript, resolución de aproximadamente 100 tickets y migración a Selenium de las automatizaciones de Banco de Chile.'],
+  ['DIC 2018–ABR 2019', 'RAC CONSULTORES · PRÁCTICA PROFESIONAL', 'Asistente de Certificador Senior: pruebas de calidad en formularios y aplicaciones web, documentación de errores y requerimientos, y gestión de incidencias en Jira.'],
 ]
 
 function ProfessionalAbout() {
@@ -17,8 +18,9 @@ function ProfessionalAbout() {
         <p className="terminal-kicker">[02] PERFIL PROFESIONAL</p>
         <h2 id="professional-title">SOBRE MÍ<span className="title-dot">.</span></h2>
         <p>
-          Soy desarrollador Full Stack y Analista Programador. Combino experiencia técnica,
-          criterio de calidad y una mirada práctica para crear software útil, robusto y fácil de mantener.
+          Soy desarrollador Full Stack y Analista Programador con más de 5 años de experiencia
+          profesional en TI. Mi experiencia abarca desarrollo y mantenimiento de aplicaciones,
+          automatización de eventos de usuario, resolución de incidentes y documentación de requerimientos.
         </p>
       </div>
 
