@@ -18,7 +18,7 @@ function App() {
     }
   }, [])
   return (
-    <div data-fiestas={fiestas}>
+    <div id="inicio" data-fiestas={fiestas}>
       <Header />
 
       <main>

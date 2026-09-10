@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import WeatherClock from './WeatherClock.jsx'
 import PuduRunner from './PuduRunner.jsx'
@@ -14,8 +14,41 @@ const navigation = [
 function Header() {
   const [runnerOpen, setRunnerOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('inicio')
   const [theme, setTheme] = useState(getInitialTheme)
   const themeTransition = useRef(null)
+
+  useEffect(() => {
+    let frame = 0
+    const updateActiveSection = () => {
+      frame = 0
+      const marker = Math.max(76, window.innerHeight * 0.3)
+      let current = 'inicio'
+      for (const { target } of navigation.slice(1)) {
+        const section = document.getElementById(target)
+        if (section && section.getBoundingClientRect().top <= marker) current = target
+      }
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = navigation.at(-1).target
+      }
+      setActiveSection(current)
+    }
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveSection)
+    }
+    scheduleUpdate()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    const resizeObserver = new ResizeObserver(scheduleUpdate)
+    const main = document.querySelector('main')
+    if (main) resizeObserver.observe(main)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      resizeObserver.disconnect()
+    }
+  }, [])
 
   function toggleTheme() {
     themeTransition.current?.skipTransition()
@@ -32,7 +65,7 @@ function Header() {
   }
 
   return (
-    <header className="site-header" id="inicio">
+    <header className="site-header">
       <button className="site-brand runner-launch" type="button" onClick={() => setRunnerOpen(true)} aria-label="Jugar Pudú Runner" title="¿Una pausa? Juega Pudú Runner">
         <span>&gt;_</span>
       </button>
@@ -50,7 +83,7 @@ function Header() {
       </button>
       <nav className={isMenuOpen ? 'is-open' : ''} id="main-navigation" aria-label="Navegación principal">
         {navigation.map(({ label, target }, index) => (
-          <a className={index === 0 ? 'active' : ''} href={`#${target}`} key={target} onClick={() => setIsMenuOpen(false)}>
+          <a className={activeSection === target ? 'active' : ''} aria-current={activeSection === target ? 'location' : undefined} href={`#${target}`} key={target} onClick={() => setIsMenuOpen(false)}>
             <b>[0{index + 1}]</b> {label}
           </a>
         ))}

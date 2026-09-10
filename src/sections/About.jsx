@@ -10,11 +10,12 @@ import daylightStudio from '../assets/daylight-studio.png'
 
 function PixelLaptop({ fiestas }) {
   const [imageMode, setImageMode] = useState('real')
+  const showFiestasTheme = fiestas && imageMode === 'generative'
   const toggleProfile = () => setImageMode((mode) => mode === 'real' ? 'generative' : 'real')
   const nextProfileLabel = imageMode === 'real' ? 'Mostrar retrato pixel art' : 'Mostrar foto real'
 
   return <div className="desk-scene" aria-label="Notebook con foto de perfil de Cristian">
-    <img className={fiestas ? 'pixel-mug pixel-terremoto' : 'pixel-mug'} src={fiestas ? terremoto : coffeeMug} alt={fiestas ? 'Terremoto chileno con helado de piña y granadina, en pixel art' : 'Taza de café pixel art'} />
+    <img className={showFiestasTheme ? 'pixel-mug pixel-terremoto' : 'pixel-mug'} src={showFiestasTheme ? terremoto : coffeeMug} alt={showFiestasTheme ? 'Terremoto chileno con helado de piña y granadina, en pixel art' : 'Taza de café pixel art'} />
     <div className="generated-notebook">
       <img className="pixel-laptop" src={laptop} alt="Notebook pixel art" />
       <div className="profile-screen-composition">
@@ -24,7 +25,7 @@ function PixelLaptop({ fiestas }) {
         src={imageMode === 'real' ? realProfile : pixelProfile}
         alt={imageMode === 'real' ? 'Foto real de Cristian Fritz Sepúlveda' : 'Retrato pixel art de Cristian Fritz Sepúlveda'}
       />
-      {fiestas && imageMode === 'generative' && <img className="profile-chupalla" src={chupalla} alt="Chupalla chilena" />}
+      {showFiestasTheme && <img className="profile-chupalla" src={chupalla} alt="Chupalla chilena" />}
       </div>
       <button className="screen-arrow screen-arrow-left" type="button" onClick={toggleProfile} aria-label={nextProfileLabel}>‹</button>
       <button className="screen-arrow screen-arrow-right" type="button" onClick={toggleProfile} aria-label={nextProfileLabel}>›</button>
