@@ -1,0 +1,3 @@
+Generated with the built-in image_gen tool.
+
+Generate a single isolated Chilean huaso chupalla straw hat as a transparent PNG overlay sprite for a pixel-art portrait. Only the hat, no person, no head, no face, no background, no shadow outside the hat. Traditional wide flat oval brim, low flat-topped cylindrical straw crown, dark brown ribbon, warm pale wheat straw with subtle woven pixel texture, dark navy pixel outline. Front three-quarter view, top surface slightly visible, suitable for placing on a person looking slightly to viewer right. Broad horizontal silhouette, approximately 3:1 width to height. Crisp detailed 16-bit pixel art. Entire hat fully visible, tightly framed with minimal transparent padding. Real alpha transparency, no checkerboard, no text.

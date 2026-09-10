@@ -4,6 +4,7 @@ import './index.css'
 import './pixel-assets.css'
 import './themes.css'
 import './project-artwork.css'
+import './fiestas-patrias.css'
 import { applyTheme, getInitialTheme } from './theme.js'
 import App from './App.jsx'
 

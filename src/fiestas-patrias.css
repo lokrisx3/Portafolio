@@ -1,0 +1,152 @@
+:root {
+  --fiestas-red: #ff8791;
+  --fiestas-blue: #91baff;
+  --fiestas-white: #f5efdf;
+  --fiestas-panel: #132039;
+  --fiestas-border: #5b6e92;
+}
+
+:root[data-theme='light'] {
+  --fiestas-red: #a52a39;
+  --fiestas-blue: #244d8f;
+  --fiestas-white: #fffaf0;
+  --fiestas-panel: #ebe7df;
+  --fiestas-border: #8b8d99;
+}
+
+[data-fiestas='true'] .site-header::after,
+[data-fiestas='true'] .section-rgb-divider {
+  background: linear-gradient(90deg, #315da1 0 33.33%, #f5efdf 33.33% 66.66%, #ce4652 66.66%);
+  box-shadow: none;
+}
+
+.fiestas-bunting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 31px;
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+  border-top: 2px solid var(--fiestas-border);
+  pointer-events: none;
+}
+
+.fiestas-bunting span {
+  flex: 0 1 27px;
+  height: 28px;
+  background: #ce4652;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.fiestas-bunting span:nth-child(3n + 2) {
+  background: #f5efdf;
+}
+
+.fiestas-bunting span:nth-child(3n) {
+  background: #315da1;
+}
+
+.fiestas-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  margin: 0 0 16px;
+  padding: 7px 9px;
+  border: 1px solid var(--fiestas-border);
+  background: var(--fiestas-panel);
+  color: var(--fiestas-blue);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.chilean-flag {
+  display: block;
+  flex: 0 0 24px;
+  height: 16px;
+  color: #fff;
+  font: 8px/8px sans-serif;
+  text-indent: 1px;
+  background: linear-gradient(#315da1, #315da1) top left / 8px 8px no-repeat, linear-gradient(#fff 50%, #ce4652 50%);
+}
+
+.pixel-terremoto {
+  z-index: 2;
+  width: 125px;
+  height: 190px;
+  object-position: center bottom;
+  filter: drop-shadow(3px 5px 3px #0005);
+}
+
+.profile-chupalla {
+  position: absolute;
+  top: -2%;
+  left: 30%;
+  width: 36%;
+  height: auto;
+  transform: rotate(-12deg);
+  transform-origin: center bottom;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+:root [data-fiestas='true'] .section-label,
+:root [data-fiestas='true'] .title-dot,
+:root [data-fiestas='true'] .terminal-kicker {
+  color: var(--fiestas-blue);
+}
+
+:root [data-fiestas='true'] .profile-links a {
+  color: var(--fiestas-red);
+  border-color: var(--fiestas-red);
+}
+
+:root [data-fiestas='true'] .profile-links a:last-child {
+  color: var(--fiestas-blue);
+  border-color: var(--fiestas-blue);
+}
+
+:root [data-fiestas='true'] .site-header nav a.active,
+:root [data-fiestas='true'] .site-header nav b {
+  color: var(--fiestas-blue);
+}
+
+:root [data-fiestas='true'] .site-header nav a.active::after {
+  background: var(--fiestas-red);
+}
+
+:root [data-fiestas='true'] .skills-terminal__bar {
+  background: linear-gradient(90deg, #253f6e, #653444);
+}
+
+:root [data-fiestas='true'] .skills-terminal__bar span {
+  color: #f5efdf;
+}
+
+@media (max-width: 640px) {
+  .fiestas-bunting {
+    gap: 6px;
+    height: 24px;
+  }
+
+  .fiestas-bunting span {
+    height: 20px;
+  }
+
+  .fiestas-bunting span:nth-child(n + 17) {
+    display: none;
+  }
+
+  .fiestas-label {
+    font-size: 8px;
+    letter-spacing: .5px;
+  }
+
+  .pixel-terremoto {
+    width: 24%;
+    height: auto;
+    max-height: 170px;
+  }
+}
