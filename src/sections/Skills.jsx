@@ -26,8 +26,8 @@ function Skills() {
   return (
     <section className="skills-section" id="habilidades" aria-labelledby="skills-title">
       <div className="skills-heading">
-        <p className="terminal-kicker">[04] STACK Y HERRAMIENTAS</p>
-        <h2 id="skills-title">HABILIDADES<span className="title-dot">.</span></h2>
+        <p className="terminal-kicker">[04] HABILIDADES</p>
+        <h2 id="skills-title">STACK Y HERRAMIENTAS<span className="title-dot">.</span></h2>
         <p>Tecnologías, herramientas, metodologías y habilidades de trabajo en equipo.</p>
       </div>
 

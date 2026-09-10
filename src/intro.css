@@ -1,0 +1,42 @@
+.intro-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: pre;
+  border: 0;
+}
+
+/* Only the role's second line uses the cyan accent. */
+.about-role .typewriter,
+.about-role .typewriter span { color: inherit; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-copy { animation: intro-rise 550ms 100ms ease-out both; }
+  .desk-scene { animation: intro-rise 650ms 180ms ease-out both; }
+  .real-profile-on-screen { animation: intro-screen 420ms 480ms ease-out both; }
+  .hero-tech-strip { animation: intro-rise 450ms 750ms ease-out both; }
+  .profile-links { animation: intro-rise 450ms 900ms ease-out both; }
+  .typewriter-character[data-pending='true'] { opacity: 0; }
+  .about-section:focus-within .typewriter-character { opacity: 1; }
+
+}
+
+/* Reloads show the introduction immediately. */
+html[data-reload='true'] :is(.about-copy, .desk-scene, .real-profile-on-screen, .hero-tech-strip, .profile-links) {
+  animation: none;
+}
+html[data-reload='true'] .typewriter-character[data-pending='true'] { opacity: 1; }
+
+@keyframes intro-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-screen {
+  from { opacity: 0; filter: brightness(0.3); }
+  to { opacity: 1; filter: brightness(1); }
+}

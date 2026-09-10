@@ -3,13 +3,31 @@
 
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (() => {
+      let theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+      try {
+        const saved = localStorage.getItem('portfolio-theme')
+        if (saved === 'light' || saved === 'dark') theme = saved
+      } catch { /* Use the system preference when storage is unavailable. */ }
+      document.documentElement.dataset.theme = theme
+      if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+        document.documentElement.dataset.reload = 'true'
+      }
+    })()
+  </script>
+  <style>
+    html { background: #02050b; color-scheme: dark; }
+    html[data-theme='light'] { background: #c0c0c0; color-scheme: light; }
+    body { margin: 0; }
+  </style>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cristian's Stacks | Full Stack Developer</title>
 </head>
 
 <body>
-  <div id="root"></div>s
+  <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

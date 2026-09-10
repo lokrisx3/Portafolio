@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Typewriter from '../components/Typewriter.jsx'
 import terremoto from '../assets/pixel-terremoto.png'
 import coffeeMug from '../assets/pixel-coffee-mug.png'
 import laptop from '../assets/pixel-laptop-profile.png'
@@ -23,6 +24,8 @@ function PixelLaptop({ fiestas }) {
         className="real-profile-on-screen"
         data-image-mode={imageMode}
         src={imageMode === 'real' ? realProfile : pixelProfile}
+        fetchPriority="high"
+        loading="eager"
         alt={imageMode === 'real' ? 'Foto real de Cristian Fritz Sepúlveda' : 'Retrato pixel art de Cristian Fritz Sepúlveda'}
       />
       {showFiestasTheme && <img className="profile-chupalla" src={chupalla} alt="Chupalla chilena" />}
@@ -39,11 +42,11 @@ function About({ fiestas }) {
       {fiestas && <div className="fiestas-bunting" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <span key={i} />)}</div>}
       <div className="about-copy">
         {fiestas && <p className="fiestas-label"><span className="chilean-flag" aria-hidden="true">★</span> FIESTAS PATRIAS</p>}
-        <p className="section-label">HOLA, SOY</p>
-        <h1 id="about-title">CRISTIAN FRITZ<br />SEPÚLVEDA<span className="cursor" /></h1>
-        <p className="about-role">DESARROLLADOR FULL STACK<br /><span>ANALISTA PROGRAMADOR</span></p>
+        <p className="section-label"><Typewriter text="HOLA, SOY" delay={180} /></p>
+        <h1 id="about-title"><Typewriter text={'CRISTIAN FRITZ\nSEPÚLVEDA'} delay={360} speed={26} /><span className="cursor" aria-hidden="true" /></h1>
+        <p className="about-role"><Typewriter text="DESARROLLADOR FULL STACK" delay={450} /><br /><span><Typewriter text="ANALISTA PROGRAMADOR" delay={650} /></span></p>
         <p className="about-description">
-          Más de 5 años de experiencia profesional en TI,<br />con foco en desarrollo de software, automatización,<br />monitoreo y QA de aplicaciones web.
+          <Typewriter text={'Más de 5 años de experiencia profesional en TI,\ncon foco en desarrollo de software, automatización,\nmonitoreo y QA de aplicaciones web.'} delay={800} speed={6} />
         </p>
 
         <div className="hero-tech-strip">

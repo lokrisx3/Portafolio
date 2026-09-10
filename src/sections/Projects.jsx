@@ -46,7 +46,7 @@ function Projects() {
     <section className="projects-section" id="proyectos" aria-labelledby="projects-title">
       <div className="projects-heading">
         <div>
-          <p className="terminal-kicker">[03] PROYECTOS SELECCIONADOS</p>
+          <p className="terminal-kicker">[03] PROYECTOS</p>
           <h2 id="projects-title">COSAS QUE HE<br />CONSTRUIDO<span className="title-dot">.</span></h2>
         </div>
         <p>Proyectos de desarrollo web, automatización y aplicaciones de escritorio en los que he trabajado.</p>
