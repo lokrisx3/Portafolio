@@ -11,9 +11,6 @@
         if (saved === 'light' || saved === 'dark') theme = saved
       } catch { /* Use the system preference when storage is unavailable. */ }
       document.documentElement.dataset.theme = theme
-      if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
-        document.documentElement.dataset.reload = 'true'
-      }
     })()
   </script>
   <style>

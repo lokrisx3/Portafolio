@@ -25,15 +25,10 @@
 
 }
 
-/* Reloads show the introduction immediately. */
-html[data-reload='true'] :is(.about-copy, .desk-scene, .real-profile-on-screen, .hero-tech-strip, .profile-links) {
-  animation: none;
-}
-html[data-reload='true'] .typewriter-character[data-pending='true'] { opacity: 1; }
-
+/* Keep the responsive transform scales intact during and after the entrance. */
 @keyframes intro-rise {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; translate: 0 10px; }
+  to { opacity: 1; translate: 0 0; }
 }
 
 @keyframes intro-screen {
