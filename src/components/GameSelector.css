@@ -1,0 +1,160 @@
+.games-launch {
+    background: none;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.games-launch:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+.games-dialog {
+    width: min(720px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    padding: 28px;
+    border: 1px solid #47665a;
+    background: #0b171c;
+    color: #eee9d8;
+    box-shadow: 0 24px 100px #0009;
+    font-family: 'Space Mono', monospace;
+}
+
+.games-dialog::backdrop {
+    background: #02050bd9;
+    backdrop-filter: blur(6px);
+}
+
+.games-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #8adc80;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.games-top button {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #47665a;
+    background: transparent;
+    color: #eee9d8;
+    cursor: pointer;
+}
+
+.games-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0 8px;
+}
+
+.games-dialog h2 {
+    margin: 0;
+    font: 400 clamp(32px, 7vw, 48px) 'VT323', monospace;
+}
+
+.games-dialog h2 span {
+    color: #8adc80;
+}
+
+.games-badge {
+    border: 1px solid #47665a;
+    padding: 6px 8px;
+    color: #8adc80;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.games-dialog>p {
+    color: #a8bdb3;
+    font-size: 12px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.games-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #47665a;
+    background: #102127;
+    color: #c4d1ca;
+    font: 12px/1.6 'Space Mono', monospace;
+    text-align: left;
+    cursor: pointer;
+}
+
+.games-card:hover {
+    border-color: #8adc80;
+    background: #172c2b;
+}
+
+.games-dialog button:focus-visible {
+    outline: 2px solid #8adc80;
+    outline-offset: 4px;
+}
+
+.games-art {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.games-art--pudu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    background: linear-gradient(#123243, #244e3b);
+    font-size: 58px;
+    border-bottom: 6px solid #8adc80;
+}
+
+.games-art--pudu span {
+    color: #8adc80;
+    font-size: 36px;
+}
+
+.games-genre {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #a8bdb3;
+}
+
+.games-card strong {
+    font: 400 32px 'VT323', monospace;
+    color: #eee9d8;
+}
+
+.games-play {
+    margin-top: auto;
+    padding-top: 12px;
+    color: #8adc80;
+}
+
+.games-card--horror .games-play {
+    color: #c4a0ef;
+}
+
+@media (max-width: 540px) {
+    .games-dialog {
+        padding: 18px;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -53,6 +53,7 @@ function Projects() {
       </div>
 
       <div className="projects-grid">
+
         {projects.map((project) => (
           <article className={`project-card project-card--${project.accent}`} key={project.number}>
             <div className="project-card__topline"><span>[{project.number}]</span><span>{project.type}</span></div>

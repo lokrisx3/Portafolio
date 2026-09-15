@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import WeatherClock from './WeatherClock.jsx'
-import PuduRunner from './PuduRunner.jsx'
+import GameSelector from './GameSelector.jsx'
 import { getInitialTheme, saveTheme } from '../theme.js'
 
 const navigation = [
@@ -12,7 +12,7 @@ const navigation = [
 ]
 
 function Header() {
-  const [runnerOpen, setRunnerOpen] = useState(false)
+  const [gamesOpen, setGamesOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
   const [theme, setTheme] = useState(getInitialTheme)
@@ -66,10 +66,10 @@ function Header() {
 
   return (
     <header className="site-header">
-      <button className="site-brand runner-launch" type="button" onClick={() => setRunnerOpen(true)} aria-label="Jugar Pudú Runner" title="¿Una pausa? Juega Pudú Runner">
+      <button className="site-brand games-launch" type="button" onClick={() => setGamesOpen(true)} aria-label="Abrir selector de juegos" aria-haspopup="dialog" title="Jugar: Pudú Runner y usUnknown">
         <span>&gt;_</span>
       </button>
-      {runnerOpen && <PuduRunner onClose={() => setRunnerOpen(false)} />}
+      {gamesOpen && <GameSelector onClose={() => setGamesOpen(false)} />}
 
       <button
         className="menu-toggle"

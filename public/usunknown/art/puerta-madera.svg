@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="24" viewBox="0 0 128 24">
+  <defs>
+    <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#b08a5b"/><stop offset=".35" stop-color="#775133"/><stop offset=".8" stop-color="#533725"/><stop offset="1" stop-color="#30231d"/></linearGradient>
+    <linearGradient id="brass" x2="0" y2="1"><stop stop-color="#ecd39a"/><stop offset=".5" stop-color="#a17c42"/><stop offset="1" stop-color="#574127"/></linearGradient>
+  </defs>
+  <rect x="1" y="2" width="126" height="20" rx="2" fill="url(#wood)" stroke="#241c19" stroke-width="2"/>
+  <path d="M6 5h116M6 19h116" stroke="#d0a779" stroke-opacity=".65"/>
+  <rect x="15" y="7" width="38" height="10" rx="1" fill="#503822" stroke="#b38b58"/>
+  <rect x="59" y="7" width="40" height="10" rx="1" fill="#503822" stroke="#b38b58"/>
+  <g fill="none" stroke="#bd9463" stroke-width=".65" opacity=".5">
+    <path d="M17 10c12-3 20 3 33 0m-32 4c12-3 20 3 32 0M62 10c9 3 22-3 34 0m-33 4c12 2 24-2 33 0M8 4c30-2 57 2 87 0M9 20c30-2 56 2 96 0"/>
+    <ellipse cx="76" cy="12" rx="5" ry="1.5"/>
+  </g>
+  <g fill="#393a36" stroke="#b6aa82" stroke-width=".7"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></g>
+  <rect x="109" y="5" width="9" height="14" rx="2" fill="url(#brass)" stroke="#392d21"/>
+  <circle cx="113.5" cy="10" r="2.5" fill="#efd6a2"/>
+  <path d="M113 10h10" stroke="#28231b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M113 9h10" stroke="#d9ba7c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M113 15v2" stroke="#32261c" stroke-width="2"/>
+</svg>
