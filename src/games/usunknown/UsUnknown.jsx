@@ -4,6 +4,7 @@ import {createGame,move,distance,roomAt,names,candidates,route,interact,lines,st
 import {base,loadArt,render,renderIntro} from './renderer.js'
 import './UsUnknown.css'
 import StoryReading from './StoryReading.jsx'
+import TouchJoystick from './TouchJoystick.jsx'
 
 export default function UsUnknown({onClose}){
 const canvas=useRef(null),host=useRef(null),runtime=useRef(null)
@@ -16,16 +17,16 @@ if(view.state==='playing'||view.state==='intro')host.current?.focus()
 useEffect(()=>{
 let alive=true,frame=0,last=0,images,game=createGame(),state='loading',intro=0,previous='playing',hudTime=0,reading=null
 const pressed=new Set(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches
-const tracks={}
+let analog={x:0,y:0}; const tracks={}
 for(const [name,file,loop,volume] of [['music','piano-ambient',true,.3],['rain','rainambient',true,.4],['intro','lluviacinematica',true,.5],['thunder','truenocinematica',false,.5],['walk','pasos',true,.35],['run','correr',true,.4],['enemy','correrasesino',true,.45]]){
 const audio=new Audio(base+'audio/'+file+'.mp3');audio.loop=loop;audio.volume=volume;tracks[name]=audio
 }
 const play=name=>{if(tracks[name].paused)tracks[name].play().catch(()=>{})}
 const sync=()=>setView({state,reading,count:game.collected.length,room:names[roomAt(game.player)]||'Vestíbulo',message:game.messageTime>0?game.message:'',light:game.light})
-const change=next=>{state=next;pressed.clear();if(next==='playing'||next==='intro')host.current?.focus();Object.values(tracks).forEach(a=>a.pause());if(next==='title')play('music');if(next==='intro')play('intro');if(next==='playing')play('rain');sync()}
+const change=next=>{state=next;pressed.clear();analog={x:0,y:0};if(next==='playing'||next==='intro')host.current?.focus();Object.values(tracks).forEach(a=>a.pause());if(next==='title')play('music');if(next==='intro')play('intro');if(next==='playing')play('rain');sync()}
 const action=name=>{
 if(name==='sound'){Object.values(tracks).forEach(a=>{a.muted=!a.muted});setMuted(tracks.music.muted);return}
-if(name==='touch'){setTouch(v=>!v);return}
+if(name==='touch'){analog={x:0,y:0};pressed.clear();setTouch(v=>!v);return}
 if(name==='start'||name==='restart'){reading=null;game=createGame();intro=0;change(name==='start'?'intro':'playing');return}
 if(name==='skip'&&state==='intro'){change('playing');return}
 if(name==='pause'){if(state==='playing'||state==='intro'){previous=state;change('paused')}else if(state==='paused')change(previous);return}
@@ -35,7 +36,7 @@ if(name==='light')game.light=!game.light
 if(name==='use'){const message=interact(game);if(message==='escaped')change('won');else if(lines.includes(message)){reading={title:storyTitles[lines.indexOf(message)],text:message};change('reading')}else{game.message=message;game.messageTime=4}}
 sync()
 }
-runtime.current={action,pressed}
+runtime.current={action,moveStick:value=>{analog=state==='playing'?value:{x:0,y:0}},aimStick:value=>{if(state==='playing'&&Math.hypot(value.x,value.y)>0){game.angle=Math.atan2(value.y,value.x);game.mouse=true}}}
 const key=e=>{
 if(state==='reading'){if(e.type==='keydown'&&e.code==='Escape'){e.preventDefault();action('dismiss')}return}
 const map={KeyW:'up',ArrowUp:'up',KeyS:'down',ArrowDown:'down',KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right',ShiftLeft:'run',ShiftRight:'run'}
@@ -58,9 +59,10 @@ if(intro>=10)change('playing')
 }
 if(state==='playing'){
 game.time+=dt;game.messageTime-=dt
-const dx=Number(pressed.has('right'))-Number(pressed.has('left')),dy=Number(pressed.has('down'))-Number(pressed.has('up')),len=Math.hypot(dx,dy)
-const old={...game.player},running=pressed.has('run')
-if(len){move(game.player,dx/len*(running?310:190)*dt,dy/len*(running?310:190)*dt,game.closed);if(!game.mouse)game.angle=Math.atan2(dy,dx)}
+const usingStick=Math.hypot(analog.x,analog.y)>0
+const dx=usingStick?analog.x:Number(pressed.has('right'))-Number(pressed.has('left')),dy=usingStick?analog.y:Number(pressed.has('down'))-Number(pressed.has('up')),len=Math.hypot(dx,dy)
+const old={...game.player},running=usingStick?len>=.85:pressed.has('run')
+if(len){move(game.player,dx/Math.max(1,len)*(running?310:190)*dt,dy/Math.max(1,len)*(running?310:190)*dt,game.closed);if(!game.mouse)game.angle=Math.atan2(dy,dx)}
 const travelled=distance(old,game.player);game.moving=travelled>.01;game.steps+=travelled
 for(const sound of ['walk','run']){if(game.moving&&sound===(running?'run':'walk'))play(sound);else tracks[sound].pause()}
 game.keys.forEach((k,i)=>{
@@ -94,8 +96,7 @@ const appRoot=document.getElementById('root'),wasInert=appRoot?.inert;if(appRoot
 return ()=>{alive=false;cancelAnimationFrame(frame);runtime.current=null;Object.values(tracks).forEach(a=>{a.pause();a.removeAttribute('src');a.load()});node.removeEventListener('keydown',key);node.removeEventListener('keyup',key);window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);document.body.style.overflow=oldOverflow;if(appRoot)appRoot.inert=wasInert;previousFocus?.focus()}
 },[])
 const action=name=>runtime.current?.action(name)
-const hold=(name,down,event)=>{event.preventDefault();if(down){event.currentTarget.setPointerCapture(event.pointerId);runtime.current?.pressed.add(name)}else runtime.current?.pressed.delete(name)}
-return createPortal(<div className="uu" ref={host} tabIndex={-1} role="dialog" aria-modal="true" aria-label="usUnknown" onKeyDown={e=>{
+return createPortal(<div className={touch?"uu uu-touch-mode":"uu"} ref={host} tabIndex={-1} role="dialog" aria-modal="true" aria-label="usUnknown" onKeyDown={e=>{
 if(e.key!=='Tab')return
 const nodes=[...host.current.querySelectorAll('button:not([disabled])')],first=nodes[0],last=nodes.at(-1)
 if(e.shiftKey&&(document.activeElement===first||document.activeElement===host.current)){e.preventDefault();last?.focus()}
@@ -110,7 +111,7 @@ else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===ho
 {['paused','won','lost'].includes(view.state)&&<div className="uu-overlay"><p className="uu-eyebrow">USUNKNOWN</p><h2>{view.state==='paused'?'Pausa':view.state==='won'?'Has escapado.':'Fin de la partida'}</h2>{view.state==='paused'&&<button className="uu-primary" onClick={()=>action('pause')}>Continuar</button>}<button onClick={()=>action('restart')}>Volver a comenzar</button><button onClick={()=>action('start')}>Ver cinemática</button></div>}
 </div>
 {view.state==='reading'&&view.reading&&<StoryReading title={view.reading.title} text={view.reading.text} onClose={()=>action('dismiss')} />}
-{touch&&view.state==='playing'&&<div className="uu-touch"><div>{[['left','←'],['up','↑'],['down','↓'],['right','→'],['run','Correr']].map(([key,label])=><button key={key} aria-label={key} onPointerDown={e=>hold(key,true,e)} onPointerUp={e=>hold(key,false,e)} onPointerCancel={e=>hold(key,false,e)} onLostPointerCapture={e=>hold(key,false,e)}>{label}</button>)}</div><div><button onClick={()=>action('light')}>Luz</button><button onClick={()=>action('use')}>Usar</button></div></div>}
-<footer className="uu-footer">WASD / flechas: caminar · Shift: correr · E: usar · F: linterna · Esc: pausa</footer>
+{touch&&view.state==='playing'&&<div className="uu-touch"><TouchJoystick label="Mover" onChange={value=>runtime.current?.moveStick(value)} /><div className="uu-touch-actions"><button onClick={()=>action('light')}>Luz</button><button onClick={()=>action('use')}>Usar</button></div><TouchJoystick label="Linterna" onChange={value=>runtime.current?.aimStick(value)} /></div>}
+<footer className="uu-footer">{touch?"Izquierdo: mover · Al borde: correr · Derecho: apuntar":"WASD / flechas: caminar · Shift: correr · E: usar · F: linterna · Esc: pausa"}</footer>
 </div>, document.body)
 }
