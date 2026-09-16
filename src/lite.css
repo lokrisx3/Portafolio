@@ -317,6 +317,10 @@
   letter-spacing: .4px;
 }
 
+#inicio.portfolio-lite[data-lite-theme="dark"] .lite-toggle {
+  background: transparent;
+}
+
 .lite-font-control {
   position: relative;
   display: flex;
