@@ -98,6 +98,13 @@
     max-width: 560px
 }
 
+.uu-cover>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px
+}
+
 .uu-eyebrow {
     letter-spacing: .25em;
     font-size: 11px;
@@ -161,6 +168,78 @@
 
 .uu-overlay p {
     max-width: 560px
+}
+
+.uu-overlay--paused {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-content: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.uu-overlay--paused p,
+.uu-overlay--paused h2 {
+    grid-column: 1 / -1;
+}
+
+.uu-overlay--paused button {
+    width: 100%;
+}
+
+.uu-options {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #060a12e8
+}
+
+.uu-options__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: min(460px, 100%);
+    max-height: 100%;
+    overflow: auto;
+    padding: 28px;
+    border: 1px solid #a78a59;
+    background: #111722;
+    box-shadow: 0 20px 60px #000b
+}
+
+.uu-options__panel h2 {
+    margin: 0 0 4px;
+    font: 400 clamp(28px, 5vw, 44px) Georgia, serif
+}
+
+.uu-options__panel label {
+    display: grid;
+    gap: 7px;
+    color: #d8cdb9;
+    font-size: 14px
+}
+
+.uu-options__panel output {
+    color: #cfb584;
+    font-size: 12px
+}
+
+.uu-options__panel input[type='range'] {
+    width: 100%;
+    accent-color: #cfb584
+}
+
+.uu-options__panel select {
+    min-height: 38px;
+    padding: 7px 10px;
+    border: 1px solid #72644d;
+    border-radius: 3px;
+    color: #e7dfce;
+    background: #161b23;
+    font: inherit
 }
 
 .uu-footer {
@@ -277,6 +356,10 @@
     .uu-overlay {
         gap: 6px;
         padding: 12px
+    }
+
+    .uu-overlay--paused {
+        gap: 6px;
     }
 
     .uu-overlay p {
@@ -399,6 +482,30 @@
     justify-content: center
 }
 
+.uu-touch[data-control-layout='left-handed'] .uu-stick-group:first-child {
+    order: 3
+}
+
+.uu-touch[data-control-layout='left-handed'] .uu-stick-group:last-child {
+    order: 1
+}
+
+.uu-touch[data-button-layout='left'] .uu-touch-actions {
+    order: -1
+}
+
+.uu-touch[data-button-layout='right'] .uu-touch-actions {
+    order: 3
+}
+
+.uu-brightness {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: #000;
+    pointer-events: none
+}
+
 @media(max-width:650px) {
     .uu-touch-mode .uu-stage {
         width: 100%
@@ -459,13 +566,137 @@
     }
 }
 
-/* Allow single-finger scrolling without pinch zoom inside the game. */
+/* Keep browser scrolling and zoom gestures from hijacking the game controls. */
 .uu {
-    touch-action: pan-x pan-y;
+    touch-action: none;
     overscroll-behavior: contain
 }
 
 .uu .uu-skip {
     padding: 6px 10px;
     font-size: 12px;
+}
+
+.uu-touch-control {
+    flex: 0 0 auto;
+}
+
+.uu .uu-touch {
+    position: absolute;
+    inset: 0;
+    display: block;
+    padding: 0;
+    pointer-events: none;
+}
+
+.uu .uu-touch .uu-touch-control {
+    position: absolute;
+    pointer-events: auto;
+}
+
+.uu-touch-control--move {
+    order: 1;
+}
+
+.uu-touch-control--actions {
+    order: 2;
+}
+
+.uu-touch-control--aim {
+    order: 3;
+}
+
+.uu-touch[data-control-layout='left-handed'] .uu-touch-control--move {
+    order: 3;
+}
+
+.uu-touch[data-control-layout='left-handed'] .uu-touch-control--aim {
+    order: 1;
+}
+
+.uu-touch[data-control-layout='left-handed'] .uu-touch-control--actions {
+    order: 2;
+}
+
+.uu-touch[data-button-layout='left'] .uu-touch-control--actions {
+    order: 1;
+}
+
+.uu-touch[data-button-layout='center'] .uu-touch-control--actions {
+    order: 2;
+}
+
+.uu-touch[data-button-layout='right'] .uu-touch-control--actions {
+    order: 3;
+}
+
+.uu-touch.is-editing {
+    position: absolute;
+    inset: 0;
+    z-index: 25;
+    display: block;
+    padding: 0;
+    pointer-events: none;
+}
+
+.uu-touch.is-editing .uu-touch-control {
+    position: absolute;
+    z-index: 1;
+    pointer-events: auto;
+    touch-action: none;
+    cursor: move;
+}
+
+.uu-touch.is-editing .uu-touch-control::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 1px dashed #cfb584aa;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.uu-touch.is-editing .uu-touch-control>* {
+    pointer-events: none;
+}
+
+.uu-touch.is-editing .uu-touch-control--actions {
+    display: flex;
+    width: max-content;
+}
+
+.uu-control-edit-bar {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(-50%);
+    padding: 8px 10px 8px 14px;
+    border: 1px solid #a78a59;
+    background: #111722ee;
+    color: #cfb584;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+@media(max-width:650px) {
+    .uu-control-edit-bar {
+        top: 8px;
+        max-width: calc(100% - 16px);
+        font-size: 11px;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 700px) {
+    .uu-touch-mode .uu-stage {
+        width: min(100%, calc((100dvh - 62px) * 16 / 9));
+        margin: auto;
+    }
+
+    .uu-touch-mode .uu-footer {
+        display: none;
+    }
 }

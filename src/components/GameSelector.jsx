@@ -51,9 +51,17 @@ function SelectorDialog({ onClose, onSelect, loading = false }) {
 
 export default function GameSelector({ onClose }) {
   const [game, setGame] = useState(null)
-  if (!game) return <SelectorDialog onClose={onClose} onSelect={setGame} />
+  const selectGame = gameName => {
+    if (gameName === 'usunknown') document.documentElement.requestFullscreen?.().catch(() => { })
+    setGame(gameName)
+  }
+  const closeGame = () => {
+    if (document.fullscreenElement) document.exitFullscreen?.()
+    setGame(null)
+  }
+  if (!game) return <SelectorDialog onClose={onClose} onSelect={selectGame} />
   const Game = game === 'pudu' ? PuduRunner : UsUnknown
-  return <Suspense fallback={<SelectorDialog loading onClose={() => setGame(null)} />}>
-    <Game onClose={() => setGame(null)} />
+  return <Suspense fallback={<SelectorDialog loading onClose={closeGame} />}>
+    <Game onClose={closeGame} />
   </Suspense>
 }
