@@ -36,7 +36,16 @@ function PixelLaptop({ fiestas }) {
   </div>
 }
 
-function About({ fiestas }) {
+function About({ fiestas, lite = false }) {
+  if (lite) return <section className="lite-intro" aria-labelledby="about-title">
+    <p className="lite-eyebrow">DESARROLLADOR FULL STACK · ANALISTA PROGRAMADOR</p>
+    <h1 id="about-title">Cristian Fritz Sepúlveda</h1>
+    <p>Más de 5 años de experiencia profesional en TI, con foco en desarrollo de software, automatización y calidad de aplicaciones web.</p>
+    <div className="lite-links">
+      <a href="https://github.com/lokrisx3" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/cfritzsepulveda/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+    </div>
+  </section>
   return (
     <section className="about-section" aria-labelledby="about-title" style={{ '--studio-scene': `url(${nightSpaceStudio})`, '--daylight-scene': `url(${daylightStudio})` }}>
       {fiestas && <div className="fiestas-bunting" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <span key={i} />)}</div>}

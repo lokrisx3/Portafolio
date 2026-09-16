@@ -170,3 +170,10 @@
 @media (max-width: 390px) {
   .pixel-mug { width: 32%; }
 }
+
+/* Stack the fixed-size notebook composition before the columns can clip. */
+@media (min-width: 641px) and (max-width: 1250px) {
+  .about-section { grid-template-columns: minmax(0, 1fr); gap: 36px; padding: 40px 6vw; }
+  .about-copy { width: 100%; max-width: 680px; transform: none; margin: 0 auto; }
+  .desk-scene { width: 590px; max-width: 100%; height: 380px; margin: 0 auto; transform: none; }
+}

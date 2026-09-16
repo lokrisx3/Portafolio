@@ -41,13 +41,13 @@ const projects = [
   },
 ]
 
-function Projects() {
+function Projects({ lite = false }) {
   return (
     <section className="projects-section" id="proyectos" aria-labelledby="projects-title">
       <div className="projects-heading">
         <div>
           <p className="terminal-kicker">[03] PROYECTOS</p>
-          <h2 id="projects-title">COSAS QUE HE<br />CONSTRUIDO<span className="title-dot">.</span></h2>
+          <h2 id="projects-title">{lite ? 'Proyectos' : <>COSAS QUE HE<br />CONSTRUIDO<span className="title-dot">.</span></>}</h2>
         </div>
         <p>Proyectos de desarrollo web, automatización y aplicaciones de escritorio en los que he trabajado.</p>
       </div>
@@ -57,11 +57,11 @@ function Projects() {
         {projects.map((project) => (
           <article className={`project-card project-card--${project.accent}`} key={project.number}>
             <div className="project-card__topline"><span>[{project.number}]</span><span>{project.type}</span></div>
-            <ProjectArtwork kind={project.artwork} />
+            {!lite && <ProjectArtwork kind={project.artwork} />}
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             <ul className="project-stack" aria-label={`Tecnologías de ${project.title}`}>
-              {project.stack.map((technology) => <li key={technology}><TechSymbol name={technology} />{technology}</li>)}
+              {project.stack.map((technology) => <li key={technology}>{!lite && <TechSymbol name={technology} />}{technology}</li>)}
             </ul>
             {project.url && (
               <a className="project-link" href={project.url} target="_blank" rel="noopener noreferrer">

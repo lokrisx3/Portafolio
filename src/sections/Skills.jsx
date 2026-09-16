@@ -22,7 +22,7 @@ const skillGroups = [
   },
 ]
 
-function Skills() {
+function Skills({ lite = false }) {
   return (
     <section className="skills-section" id="habilidades" aria-labelledby="skills-title">
       <div className="skills-heading">
@@ -42,7 +42,7 @@ function Skills() {
               <ul>
                 {group.skills.map((skill) => (
                   <li key={skill}>
-                    {group.number === '01'
+                    {!lite && group.number === '01'
                       ? <TechSymbol name={skill} />
                       : <span className="skill-bullet" aria-hidden="true" />}
                     {skill}

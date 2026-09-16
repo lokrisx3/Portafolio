@@ -11,7 +11,7 @@ const navigation = [
   { label: 'HABILIDADES', target: 'habilidades' },
 ]
 
-function Header() {
+function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeChange, liteTheme = 'light', onLiteThemeChange }) {
   const [gamesOpen, setGamesOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
@@ -66,10 +66,11 @@ function Header() {
 
   return (
     <header className="site-header">
-      <button className="site-brand games-launch" type="button" onClick={() => setGamesOpen(true)} aria-label="Abrir selector de juegos" aria-haspopup="dialog" title="Jugar: Pudú Runner y usUnknown">
+      {!lite && <button className="site-brand games-launch" type="button" onClick={() => setGamesOpen(true)} aria-label="Abrir selector de juegos" aria-haspopup="dialog" title="Jugar: Pudú Runner y usUnknown">
         <span>&gt;_</span>
-      </button>
-      {gamesOpen && <GameSelector onClose={() => setGamesOpen(false)} />}
+      </button>}
+      {!lite && gamesOpen && <GameSelector onClose={() => setGamesOpen(false)} />}
+      <button className="lite-toggle" type="button" aria-pressed={lite} onClick={onToggleLite}>Modo lite</button>
 
       <button
         className="menu-toggle"
@@ -79,17 +80,35 @@ function Header() {
         aria-controls="main-navigation"
         onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
       >
-        {isMenuOpen ? '×' : '☰'}
+        <span className="menu-toggle__lines" aria-hidden="true">
+          <span /><span /><span />
+        </span>
       </button>
       <nav className={isMenuOpen ? 'is-open' : ''} id="main-navigation" aria-label="Navegación principal">
         {navigation.map(({ label, target }, index) => (
           <a className={activeSection === target ? 'active' : ''} aria-current={activeSection === target ? 'location' : undefined} href={`#${target}`} key={target} onClick={() => setIsMenuOpen(false)}>
-            <b>[0{index + 1}]</b> {label}
+            <b>[0{index + 1}]</b> <span className="nav-label">{label}</span>
           </a>
         ))}
       </nav>
-      <WeatherClock />
-      <button
+      {!lite && <WeatherClock />}
+      {lite && <label className="lite-font-control">
+        <span>Tamaño de letra</span>
+        <select value={liteFontSize} onChange={event => onLiteFontSizeChange(Number(event.target.value))}>
+          <option value={14}>Pequeña</option>
+          <option value={16}>Normal</option>
+          <option value={18}>Grande</option>
+          <option value={20}>Muy grande</option>
+        </select>
+      </label>}
+      {lite ? <label className="lite-font-control lite-theme-control">
+        <span>Apariencia</span>
+        <select value={liteTheme} onChange={event => onLiteThemeChange(event.target.value)}>
+          <option value="light">Claro</option>
+          <option value="reading">Lectura</option>
+          <option value="dark">Oscuro</option>
+        </select>
+      </label> : <button
         className="theme-toggle"
         type="button"
         onClick={toggleTheme}
@@ -105,7 +124,7 @@ function Header() {
             <path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z" />
           </svg>
         </span>
-      </button>
+      </button>}
     </header>
   )
 }
