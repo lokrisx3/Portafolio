@@ -1,11 +1,22 @@
 import Header from './components/Header.jsx'
-import About from './sections/About.jsx'
-import ProfessionalAbout from './sections/ProfessionalAbout.jsx'
-import Projects from './sections/Projects.jsx'
-import Skills from './sections/Skills.jsx'
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { isFiestasPatrias } from './season'
 import './lite.css'
+
+const CONTENT_LOAD_TIMEOUT = 8000
+const About = lazy(() => import('./sections/About.jsx'))
+const ProfessionalAbout = lazy(() => import('./sections/ProfessionalAbout.jsx'))
+const Projects = lazy(() => import('./sections/Projects.jsx'))
+const Skills = lazy(() => import('./sections/Skills.jsx'))
+
+function LoadingScreen({ timedOut }) {
+  return (
+    <div className="portfolio-loading" role="status" aria-live="polite">
+      <span className="portfolio-loading__indicator" aria-hidden="true" />
+      <p>{timedOut ? 'La carga está tardando más de lo esperado...' : 'Cargando portafolio...'}</p>
+    </div>
+  )
+}
 
 function App() {
   const [liteTheme, setLiteTheme] = useState(() => {
@@ -19,6 +30,11 @@ function App() {
     setLiteTheme(theme)
     try { localStorage.setItem('portfolio-lite-theme', theme) } catch { /* Keep selection for this visit. */ }
   }
+  const [contentLoadTimedOut, setContentLoadTimedOut] = useState(false)
+  useEffect(() => {
+    const timer = window.setTimeout(() => setContentLoadTimedOut(true), CONTENT_LOAD_TIMEOUT)
+    return () => window.clearTimeout(timer)
+  }, [])
   const [liteFontSize, setLiteFontSize] = useState(() => {
     try {
       const saved = Number(localStorage.getItem('portfolio-lite-font-size'))
@@ -52,12 +68,14 @@ function App() {
     <div id="inicio" data-fiestas={!lite && fiestas} data-lite-theme={lite ? liteTheme : undefined} className={lite ? 'portfolio-lite' : undefined} style={lite ? { '--lite-font-size': `${liteFontSize}px` } : undefined}>
       <Header lite={lite} onToggleLite={toggleLite} liteFontSize={liteFontSize} onLiteFontSizeChange={changeLiteFontSize} liteTheme={liteTheme} onLiteThemeChange={changeLiteTheme} />
 
-      <main>
-        <About fiestas={fiestas} lite={lite} />
-        <ProfessionalAbout />
-        <Projects lite={lite} />
-        <Skills lite={lite} />
-      </main>
+      <Suspense fallback={<LoadingScreen timedOut={contentLoadTimedOut} />}>
+        <main>
+          <About fiestas={fiestas} lite={lite} />
+          <ProfessionalAbout />
+          <Projects lite={lite} />
+          <Skills lite={lite} />
+        </main>
+      </Suspense>
     </div>
   );
 }

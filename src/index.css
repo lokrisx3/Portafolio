@@ -1607,6 +1607,49 @@ main>section:not(.about-section) h2 {
     }
 }
 
+.portfolio-loading {
+    min-height: calc(100vh - 60px);
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 14px;
+    padding: 32px;
+    color: #d9d2c2;
+    background: #02050b;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+}
+
+.portfolio-loading p {
+    margin: 0;
+}
+
+.portfolio-loading__indicator {
+    width: 34px;
+    height: 34px;
+    border: 3px solid #2d3a4e;
+    border-top-color: #7ec853;
+    border-radius: 50%;
+    animation: portfolio-loading-spin .8s linear infinite;
+}
+
+@keyframes portfolio-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#inicio.portfolio-lite .portfolio-loading {
+    color: var(--lite-ink);
+    background: var(--lite-desk);
+}
+
+#inicio.portfolio-lite .portfolio-loading__indicator {
+    border-color: var(--lite-border);
+    border-top-color: var(--lite-accent);
+}
+
+
 @media (max-width: 700px) {
     .site-header nav.is-open {
         animation: none;
