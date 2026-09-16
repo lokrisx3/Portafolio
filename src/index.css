@@ -71,7 +71,28 @@ body {
     flex: 1;
     height: 100%;
     justify-content: center;
-    gap: clamp(18px, 2.3vw, 36px)
+    gap: clamp(18px, 2.3vw, 36px);
+    order: 2
+}
+
+.site-brand {
+    order: 1;
+}
+
+.lite-toggle {
+    order: 3;
+}
+
+.weather-clock {
+    order: 4;
+}
+
+.theme-toggle {
+    order: 5;
+}
+
+.menu-toggle {
+    order: 6;
 }
 
 .site-header nav a {
@@ -80,8 +101,10 @@ body {
     place-content: center;
     color: #e7e1d2;
     text-decoration: none;
-    font-size: 12px;
+    font-family: 'VT323', monospace;
+    font-size: 15px;
     font-weight: 700;
+    letter-spacing: .3px;
     white-space: nowrap
 }
 
@@ -466,7 +489,8 @@ main>section:not(.about-section) h2 {
 
     .menu-toggle {
         display: block;
-        margin-left: auto
+        margin-left: auto;
+        order: 6
     }
 
     .theme-toggle {
@@ -480,18 +504,29 @@ main>section:not(.about-section) h2 {
         top: 58px;
         left: 0;
         right: 0;
-        display: none;
+        display: grid;
         height: auto;
         padding: 8px 12px 12px;
         border-bottom: 2px solid #343047;
         background: #070a13;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, .35)
+        box-shadow: 0 12px 20px rgba(0, 0, 0, .35);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        clip-path: inset(0 0 100% 0);
+        transition: opacity 180ms ease, transform 240ms ease, clip-path 240ms ease, visibility 0s linear 240ms
     }
 
     .site-header nav.is-open {
-        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 4px
+        gap: 4px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        clip-path: inset(0);
+        transition-delay: 0s
     }
 
     .site-header nav a {
@@ -1441,25 +1476,54 @@ main>section:not(.about-section) h2 {
     overflow-wrap: anywhere
 }
 
-/* Keep the original mobile toolbar and live information on separate rows. */
+/* Keep the original mobile toolbar in one row. */
 @media (max-width: 640px) {
-    #inicio:not(.portfolio-lite) { padding-top: 48px; }
-    #inicio:not(.portfolio-lite) main > section { scroll-margin-top: 48px; }
+    #inicio:not(.portfolio-lite) {
+        padding-top: 48px;
+    }
+
+    #inicio:not(.portfolio-lite) main>section {
+        scroll-margin-top: 48px;
+    }
+
     #inicio:not(.portfolio-lite) .site-header {
-        display: grid;
-        grid-template-columns: auto auto minmax(0, 1fr) 36px 36px;
-        grid-template-rows: 36px minmax(0, 1fr);
-        gap: 8px 12px;
-        height: 108px;
-        padding: 10px 12px;
+        display: flex;
+        gap: 6px;
+        height: 60px;
+        padding: 8px 12px;
         align-items: center;
     }
-    #inicio:not(.portfolio-lite) .site-brand { grid-area: 2 / 1; width: auto; }
-    #inicio:not(.portfolio-lite) .menu-toggle { grid-area: 2 / 5; margin: 0; width: 36px; height: 36px; }
-    #inicio:not(.portfolio-lite) .lite-toggle { grid-area: 2 / 2; margin: 0; height: 36px; }
-    #inicio:not(.portfolio-lite) .theme-toggle { grid-area: 2 / 4; margin: 0; width: 36px; height: 36px; }
+
+    #inicio:not(.portfolio-lite) .site-brand {
+        order: 1;
+        width: auto;
+    }
+
+    #inicio:not(.portfolio-lite) .lite-toggle {
+        order: 2;
+        margin: 0;
+        height: 36px;
+    }
+
     #inicio:not(.portfolio-lite) .weather-clock {
-        grid-area: 1 / 1 / 2 / -1;
+        order: 3;
+        flex: 1 1 0;
+    }
+
+    #inicio:not(.portfolio-lite) .theme-toggle {
+        order: 4;
+        margin: 0;
+        width: 36px;
+    }
+
+    #inicio:not(.portfolio-lite) .menu-toggle {
+        order: 5;
+        margin: 0;
+        width: 36px;
+        height: 36px;
+    }
+
+    #inicio:not(.portfolio-lite) .weather-clock {
         position: static;
         transform: none;
         display: flex;
@@ -1472,10 +1536,21 @@ main>section:not(.about-section) h2 {
         border: 0;
         gap: 12px;
         text-align: center;
+        overflow: hidden;
     }
-    #inicio:not(.portfolio-lite) .clock-reading { display: flex; gap: 8px; }
-    #inicio:not(.portfolio-lite) .weather-reading { line-height: 1.2; }
-    #inicio:not(.portfolio-lite) .site-header nav { top: 108px; }
+
+    #inicio:not(.portfolio-lite) .clock-reading {
+        display: flex;
+        gap: 8px;
+    }
+
+    #inicio:not(.portfolio-lite) .weather-reading {
+        line-height: 1.2;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header nav {
+        top: 60px;
+    }
 }
 
 .menu-toggle {
@@ -1484,9 +1559,11 @@ main>section:not(.about-section) h2 {
     touch-action: manipulation;
     transition: transform 180ms ease, background-color 180ms ease;
 }
+
 .menu-toggle:active {
     transform: scale(.88);
 }
+
 .menu-toggle__lines {
     display: block;
     position: absolute;
@@ -1496,7 +1573,8 @@ main>section:not(.about-section) h2 {
     width: 20px;
     height: 16px;
 }
-.menu-toggle__lines > span {
+
+.menu-toggle__lines>span {
     position: absolute;
     left: 0;
     top: 7px;
@@ -1506,45 +1584,109 @@ main>section:not(.about-section) h2 {
     background: currentColor;
     transition: transform 220ms ease, opacity 160ms ease;
 }
-.menu-toggle__lines > span:first-child { transform: translateY(-6px); }
-.menu-toggle__lines > span:last-child { transform: translateY(6px); }
-@keyframes navigation-reveal {
-    from { opacity: 0; transform: translateY(-8px); clip-path: inset(0 0 100% 0); }
-    to { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+
+.menu-toggle__lines>span:first-child {
+    transform: translateY(-6px);
 }
-@media (max-width: 700px) {
-    .site-header nav.is-open {
-        animation: navigation-reveal 240ms ease-out both;
+
+.menu-toggle__lines>span:last-child {
+    transform: translateY(6px);
+}
+
+@keyframes navigation-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+        clip-path: inset(0 0 100% 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        clip-path: inset(0);
     }
 }
-.menu-toggle[aria-expanded="true"] .menu-toggle__lines > span:first-child { transform: rotate(45deg); }
-.menu-toggle[aria-expanded="true"] .menu-toggle__lines > span:nth-child(2) { transform: scaleX(0); opacity: 0; }
-.menu-toggle[aria-expanded="true"] .menu-toggle__lines > span:last-child { transform: rotate(-45deg); }
+
+@media (max-width: 700px) {
+    .site-header nav.is-open {
+        animation: none;
+    }
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__lines>span:first-child {
+    transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__lines>span:nth-child(2) {
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__lines>span:last-child {
+    transform: rotate(-45deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .site-header nav.is-open { animation: none; }
-    .menu-toggle { transition: none; }
-    .menu-toggle:active { transform: none; }
-    .menu-toggle__lines > span { transition: none; }
+    .site-header nav.is-open {
+        animation: none;
+    }
+
+    .menu-toggle {
+        transition: none;
+    }
+
+    .menu-toggle:active {
+        transform: none;
+    }
+
+    .menu-toggle__lines>span {
+        transition: none;
+    }
 }
 
 /* Keep the clock available on tablets without crowding the navigation. */
 @media (min-width: 641px) and (max-width: 1100px) {
-    #inicio:not(.portfolio-lite) { padding-top: 48px; }
-    #inicio:not(.portfolio-lite) main > section { scroll-margin-top: 48px; }
-    #inicio:not(.portfolio-lite) .site-header {
-        display: grid;
-        grid-template-columns: auto auto minmax(0, 1fr) 40px;
-        grid-template-rows: 36px 36px;
-        height: 108px;
-        gap: 8px 18px;
-        padding: 10px 16px;
+    #inicio:not(.portfolio-lite) {
+        padding-top: 48px;
     }
-    #inicio:not(.portfolio-lite) .site-brand { grid-area: 2 / 1; width: auto; }
-    #inicio:not(.portfolio-lite) .site-header nav { grid-area: 2 / 3; gap: 14px; }
-    #inicio:not(.portfolio-lite) .lite-toggle { grid-area: 2 / 2; margin: 0; }
-    #inicio:not(.portfolio-lite) .theme-toggle { grid-area: 2 / 4; margin: 0; }
+
+    #inicio:not(.portfolio-lite) main>section {
+        scroll-margin-top: 48px;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header {
+        display: flex;
+        height: 60px;
+        gap: 10px;
+        padding: 8px 16px;
+    }
+
+    #inicio:not(.portfolio-lite) .site-brand {
+        order: 1;
+        width: auto;
+    }
+
+    #inicio:not(.portfolio-lite) .lite-toggle {
+        order: 2;
+        margin: 0;
+    }
+
     #inicio:not(.portfolio-lite) .weather-clock {
-        grid-area: 1 / 1 / 2 / -1;
+        order: 3;
+        flex: 1 1 0;
+    }
+
+    #inicio:not(.portfolio-lite) .theme-toggle {
+        order: 4;
+        margin: 0;
+    }
+
+    #inicio:not(.portfolio-lite) .menu-toggle {
+        order: 5;
+        margin: 0;
+    }
+
+    #inicio:not(.portfolio-lite) .weather-clock {
         display: flex;
         justify-content: center;
         margin: 0;
@@ -1552,33 +1694,141 @@ main>section:not(.about-section) h2 {
         border: 0;
         text-align: center;
     }
-    #inicio:not(.portfolio-lite) .clock-reading { display: flex; align-items: center; gap: 8px; }
+
+    #inicio:not(.portfolio-lite) .clock-reading {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+@media (min-width: 641px) {
+    #inicio:not(.portfolio-lite) .lite-toggle {
+        order: 2;
+        margin-left: 12px;
+        border-color: currentColor;
+        background: transparent;
+        box-shadow: none;
+        font: 600 12px 'Space Mono', monospace;
+        letter-spacing: normal;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header nav {
+        order: 3;
+    }
+
+    #inicio:not(.portfolio-lite) .weather-clock {
+        order: 4;
+    }
+
+    #inicio:not(.portfolio-lite) .theme-toggle {
+        order: 5;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 850px) {
+    #inicio:not(.portfolio-lite) .site-header {
+        position: fixed;
+        height: 60px;
+        padding: 8px 16px;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header nav {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        display: grid;
+        height: auto;
+        padding: 8px 12px 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        background: #070a13;
+        border-bottom: 2px solid #343047;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, .35);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        clip-path: inset(0 0 100% 0);
+        transition: opacity 180ms ease, transform 240ms ease, clip-path 240ms ease, visibility 0s linear 240ms;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        clip-path: inset(0);
+        transition-delay: 0s;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header nav a {
+        min-height: 42px;
+        padding: 7px 8px;
+        border: 1px solid #24253a;
+    }
+
+    #inicio:not(.portfolio-lite) .menu-toggle {
+        display: block;
+        margin: 0 0 0 auto;
+    }
 }
 
 /* Use a single toolbar row when the mobile controls and weather fit. */
 @media (min-width: 480px) and (max-width: 640px) {
-    #inicio:not(.portfolio-lite) { padding-top: 0; }
-    #inicio:not(.portfolio-lite) main > section { scroll-margin-top: 0; }
-    #inicio:not(.portfolio-lite) .site-header {
-        grid-template-columns: 32px auto minmax(0, 1fr) 36px 36px;
-        grid-template-rows: 40px;
-        height: 60px;
-        gap: 8px;
-        padding: 10px 12px;
+    #inicio:not(.portfolio-lite) {
+        padding-top: 0;
     }
-    #inicio:not(.portfolio-lite) .site-brand { grid-area: 1 / 1; }
-    #inicio:not(.portfolio-lite) .lite-toggle { grid-area: 1 / 2; }
-    #inicio:not(.portfolio-lite) .theme-toggle { grid-area: 1 / 4; }
-    #inicio:not(.portfolio-lite) .menu-toggle { grid-area: 1 / 5; }
+
+    #inicio:not(.portfolio-lite) main>section {
+        scroll-margin-top: 0;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header {
+        display: flex;
+        gap: 6px;
+        padding: 8px 12px;
+    }
+
+    #inicio:not(.portfolio-lite) .site-brand {
+        order: 1;
+    }
+
+    #inicio:not(.portfolio-lite) .lite-toggle {
+        order: 2;
+    }
+
     #inicio:not(.portfolio-lite) .weather-clock {
-        grid-area: 1 / 3;
+        order: 3;
+        flex: 1 1 0;
+    }
+
+    #inicio:not(.portfolio-lite) .theme-toggle {
+        order: 4;
+    }
+
+    #inicio:not(.portfolio-lite) .menu-toggle {
+        order: 5;
+    }
+
+    #inicio:not(.portfolio-lite) .weather-clock {
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 2px;
         line-height: 1.1;
     }
-    #inicio:not(.portfolio-lite) .weather-reading { font-size: 11px; }
-    #inicio:not(.portfolio-lite) .weather-reading small { display: none; }
-    #inicio:not(.portfolio-lite) .site-header nav { top: 60px; }
+
+    #inicio:not(.portfolio-lite) .weather-reading {
+        font-size: 11px;
+    }
+
+    #inicio:not(.portfolio-lite) .weather-reading small {
+        display: none;
+    }
+
+    #inicio:not(.portfolio-lite) .site-header nav {
+        top: 60px;
+    }
 }

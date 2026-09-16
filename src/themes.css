@@ -36,14 +36,16 @@
 [data-theme='light'] .site-header nav a.active { color: var(--light-purple); }
 
 [data-theme='light'] .theme-toggle,
-[data-theme='light'] .menu-toggle {
+[data-theme='light'] .menu-toggle,
+[data-theme='light'] .lite-toggle {
   color: var(--light-purple);
   background: #c0c0c0;
   border-color: #808080;
 }
 
 .theme-toggle:hover,
-.menu-toggle:hover { box-shadow: 0 0 0 2px var(--theme-focus); }
+.menu-toggle:hover,
+.lite-toggle:hover { box-shadow: 0 0 0 2px var(--theme-focus); }
 
 [data-theme='light'] .weather-clock,
 [data-theme='light'] .weather-clock :is(span, strong, small, .weather-reading) {

@@ -70,7 +70,7 @@ function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeC
         <span>&gt;_</span>
       </button>}
       {!lite && gamesOpen && <GameSelector onClose={() => setGamesOpen(false)} />}
-      <button className="lite-toggle" type="button" aria-pressed={lite} onClick={onToggleLite}>Modo lite</button>
+      <button className="lite-toggle" type="button" aria-pressed={lite} onClick={onToggleLite}>{lite ? 'Modo Portafolio' : 'Modo CV'}</button>
 
       <button
         className="menu-toggle"
@@ -92,23 +92,25 @@ function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeC
         ))}
       </nav>
       {!lite && <WeatherClock />}
-      {lite && <label className="lite-font-control">
-        <span>Tamaño de letra</span>
-        <select value={liteFontSize} onChange={event => onLiteFontSizeChange(Number(event.target.value))}>
-          <option value={14}>Pequeña</option>
-          <option value={16}>Normal</option>
-          <option value={18}>Grande</option>
-          <option value={20}>Muy grande</option>
-        </select>
-      </label>}
-      {lite ? <label className="lite-font-control lite-theme-control">
-        <span>Apariencia</span>
-        <select value={liteTheme} onChange={event => onLiteThemeChange(event.target.value)}>
-          <option value="light">Claro</option>
-          <option value="reading">Lectura</option>
-          <option value="dark">Oscuro</option>
-        </select>
-      </label> : <button
+      {lite ? <div className="lite-controls">
+        <label className="lite-font-control">
+          <span>Tamaño de letra</span>
+          <select value={liteFontSize} onChange={event => onLiteFontSizeChange(Number(event.target.value))}>
+            <option value={14}>Pequeña</option>
+            <option value={16}>Normal</option>
+            <option value={18}>Grande</option>
+            <option value={20}>Muy grande</option>
+          </select>
+        </label>
+        <label className="lite-font-control lite-theme-control">
+          <span>Apariencia</span>
+          <select value={liteTheme} onChange={event => onLiteThemeChange(event.target.value)}>
+            <option value="light">Claro</option>
+            <option value="reading">Lectura</option>
+            <option value="dark">Oscuro</option>
+          </select>
+        </label>
+      </div> : <button
         className="theme-toggle"
         type="button"
         onClick={toggleTheme}
