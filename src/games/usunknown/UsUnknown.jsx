@@ -10,6 +10,16 @@ export default function UsUnknown({onClose}){
 const canvas=useRef(null),host=useRef(null),runtime=useRef(null)
 const [view,setView]=useState({state:'loading',count:0,room:'Vestíbulo',message:''})
 const [muted,setMuted]=useState(false),[touch,setTouch]=useState(()=>matchMedia('(pointer: coarse)').matches)
+// Keep multi-touch controls from triggering browser zoom, including Safari gestures.
+useEffect(()=>{
+const node=host.current
+const preventGesture=e=>{if(e.cancelable)e.preventDefault()}
+const preventPinch=e=>{if(e.touches.length>1)preventGesture(e)}
+const preventWheelZoom=e=>{if(e.ctrlKey)preventGesture(e)}
+const listeners=[['touchstart',preventPinch],['touchmove',preventPinch],['gesturestart',preventGesture],['gesturechange',preventGesture],['wheel',preventWheelZoom]]
+for(const [type,handler] of listeners)node.addEventListener(type,handler,{passive:false})
+return ()=>{for(const [type,handler] of listeners)node.removeEventListener(type,handler)}
+},[])
 // Restore keyboard input after React removes the modal and releases its focus trap.
 useEffect(()=>{
 if(view.state==='playing'||view.state==='intro')host.current?.focus()

@@ -15,3 +15,6 @@
 .uu-touch .uu-touch-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 @media(max-width:650px){.uu-touch-mode .uu-stage{width:100%}.uu-touch .uu-touch-actions{max-width:80px}.uu-touch-actions button{width:100%}}
 @media(orientation:landscape) and (max-height:600px){.uu-toolbar{padding:4px 8px}.uu-toolbar button{padding:6px 10px}.uu-touch-mode .uu-stage{width:min(100%,calc((100dvh - 70px)*16/9));margin:auto}.uu-touch-mode .uu-touch{position:absolute;bottom:max(8px,env(safe-area-inset-bottom));left:0;right:0;pointer-events:none;padding:8px 16px}.uu-touch .uu-stick-group,.uu-touch .uu-touch-actions{pointer-events:auto}.uu-touch .uu-touch-actions{align-self:flex-end;max-width:none}.uu-stick{width:104px}.uu-touch-mode .uu-footer{display:none}.uu-message{bottom:110px}}
+
+/* Allow single-finger scrolling without pinch zoom inside the game. */
+.uu{touch-action:pan-x pan-y;overscroll-behavior:contain}
