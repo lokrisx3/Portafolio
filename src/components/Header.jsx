@@ -87,7 +87,7 @@ function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeC
       <nav className={isMenuOpen ? 'is-open' : ''} id="main-navigation" aria-label="Navegación principal">
         {navigation.map(({ label, target }, index) => (
           <a className={activeSection === target ? 'active' : ''} aria-current={activeSection === target ? 'location' : undefined} href={`#${target}`} key={target} onClick={() => setIsMenuOpen(false)}>
-            <b>[0{index + 1}]</b> <span className="nav-label">{label}</span>
+            <b>[0{index + 1}]</b> <span className="nav-label">{lite && target === 'sobre-mi' ? 'PERFIL' : label}</span>
           </a>
         ))}
       </nav>

@@ -22,7 +22,29 @@ const skillGroups = [
   },
 ]
 
+const cvSkillGroups = [
+  ['Frontend', ['JavaScript', 'React', 'HTML', 'CSS', 'Bootstrap']],
+  ['Backend y bases de datos', ['Java', 'Spring Boot', 'Python', 'Django', 'C#', 'PHP', 'PostgreSQL', 'MySQL']],
+  ['Automatización y calidad', ['Selenium', 'Playwright', 'Pruebas de software', 'Gestión de incidencias con Jira']],
+  ['Herramientas', ['Git', 'GitHub', 'Docker', 'Linux', 'IA generativa']],
+  ['Prácticas de desarrollo', ['API REST', 'CRUD', 'Programación orientada a objetos', 'MVC', 'Diseño adaptable']],
+  ['Colaboración', ['Scrum', 'Metodologías ágiles', 'Trabajo en equipo', 'Comunicación', 'Adaptabilidad', 'Asertividad', 'Creatividad']],
+]
+
 function Skills({ lite = false }) {
+  if (lite) return (
+    <section className="skills-section" id="habilidades" aria-labelledby="skills-title">
+      <h2 id="skills-title">Competencias técnicas y de trabajo</h2>
+      <dl className="cv-skills">
+        {cvSkillGroups.map(([title, concepts]) => (
+          <div key={title}>
+            <dt>{title}</dt>
+            <dd><ul className="cv-concepts">{concepts.map(concept => <li key={concept}>{concept}</li>)}</ul></dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
   return (
     <section className="skills-section" id="habilidades" aria-labelledby="skills-title">
       <div className="skills-heading">

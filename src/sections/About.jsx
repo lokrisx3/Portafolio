@@ -38,10 +38,14 @@ function PixelLaptop({ fiestas }) {
 
 function About({ fiestas, lite = false }) {
   if (lite) return <section className="lite-intro" aria-labelledby="about-title">
-    <p className="lite-eyebrow">DESARROLLADOR FULL STACK · ANALISTA PROGRAMADOR</p>
     <h1 id="about-title">Cristian Fritz Sepúlveda</h1>
-    <p>Más de 5 años de experiencia profesional en TI, con foco en desarrollo de software, automatización y calidad de aplicaciones web.</p>
-    <div className="lite-links">
+    <p className="lite-role">Desarrollador Full Stack · Analista Programador</p>
+    <p className="cv-location">Peñalolén, Santiago, Chile</p>
+    <div className="lite-links cv-contact" aria-label="Contacto">
+      <a href="mailto:cfritzsepulveda8@gmail.com">cfritzsepulveda8@gmail.com</a>
+      <a href="tel:+56935747761">+56 9 3574 7761</a>
+    </div>
+    <div className="lite-links" aria-label="Perfiles profesionales">
       <a href="https://github.com/lokrisx3" target="_blank" rel="noreferrer">GitHub ↗</a>
       <a href="https://www.linkedin.com/in/cfritzsepulveda/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
     </div>

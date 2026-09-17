@@ -11,7 +11,63 @@ const experience = [
   ['DIC 2018–ABR 2019', 'RAC CONSULTORES · PRÁCTICA PROFESIONAL', 'Asistente de Certificador Senior: pruebas de calidad en formularios y aplicaciones web, documentación de errores y requerimientos, y gestión de incidencias en Jira.'],
 ]
 
-function ProfessionalAbout() {
+const cvExperience = [
+  {
+    date: 'Abr – ago 2026', company: 'Generation Chile · Bootcamp', role: 'Desarrollador Full Stack · Proyecto Visium',
+    details: [
+      'Desarrollo de módulos de pacientes, fichas clínicas y consultas con React, Java, Spring Boot y PostgreSQL.',
+      'Planificación y coordinación de tareas como Scrum Master, e integración de apoyo con IA.',
+      'Trabajo colaborativo y control de versiones con Git y GitHub.',
+    ],
+  },
+  {
+    date: 'Nov 2022 – abr 2024', company: 'Atentus', role: 'Desarrollador Junior',
+    details: [
+      'Desarrollo y mantenimiento de 5 sitios web con React, JavaScript, Python y Django.',
+      'Implementación de mejoras, nuevas funcionalidades y correcciones de errores.',
+      'Gestión de datos en PostgreSQL y control de versiones con Git en entornos Linux.',
+    ],
+  },
+  {
+    date: 'Sep 2019 – nov 2022', company: 'Atentus', role: 'Ingeniero de Atención al Cliente',
+    details: [
+      'Desarrollo de más de 20 automatizaciones con Selenium y JavaScript para monitoreo y control de calidad de sitios web y aplicaciones móviles.',
+      'Gestión y resolución de aproximadamente 100 tickets de incidentes técnicos y solicitudes de automatización.',
+      'Liderazgo de la migración a Selenium de las automatizaciones de Banco de Chile ante una incompatibilidad tecnológica. Posterior promoción a Desarrollador Junior.',
+    ],
+  },
+  {
+    date: 'Dic 2018 – abr 2019', company: 'RAC Consultores', role: 'Asistente de Certificador Senior · Práctica profesional',
+    details: [
+      'Pruebas de calidad en formularios y aplicaciones web.',
+      'Detección y documentación de errores funcionales y requerimientos mediante vectores y pre-vectores; gestión de incidencias en Jira.',
+    ],
+  },
+]
+
+function ProfessionalAbout({ lite = false }) {
+  if (lite) return (
+    <>
+      <section id="sobre-mi" aria-labelledby="professional-title">
+        <h2 id="professional-title">Perfil profesional</h2>
+        <p>Analista Programador y desarrollador Full Stack con más de 5 años de experiencia profesional en TI. Experiencia en desarrollo y mantenimiento de aplicaciones web, automatización de eventos de usuario, monitoreo y QA. Mi trabajo incluye la resolución de incidentes técnicos y la documentación de requerimientos.</p>
+      </section>
+      <section className="cv-experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">Experiencia</h2>
+        <ol className="cv-experience-list">
+          {cvExperience.map(({ date, company, role, details }) => (
+            <li key={`${company}-${date}`}>
+              <article>
+                <h3>{role}</h3>
+                <p className="cv-experience-meta"><strong>{company}</strong><span>{date}</span></p>
+                <ul>{details.map(detail => <li key={detail}>{detail}</li>)}</ul>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </>
+  )
   return (
     <section className="professional-section" id="sobre-mi" aria-labelledby="professional-title">
       <div className="professional-intro">

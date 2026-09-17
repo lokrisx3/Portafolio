@@ -8,6 +8,7 @@ const About = lazy(() => import('./sections/About.jsx'))
 const ProfessionalAbout = lazy(() => import('./sections/ProfessionalAbout.jsx'))
 const Projects = lazy(() => import('./sections/Projects.jsx'))
 const Skills = lazy(() => import('./sections/Skills.jsx'))
+const Education = lazy(() => import('./sections/Education.jsx'))
 
 function LoadingScreen({ timedOut }) {
   return (
@@ -71,8 +72,10 @@ function App() {
       <Suspense fallback={<LoadingScreen timedOut={contentLoadTimedOut} />}>
         <main>
           <About fiestas={fiestas} lite={lite} />
-          <ProfessionalAbout />
+          <ProfessionalAbout lite={lite} />
+          {lite && <Education />}
           <Projects lite={lite} />
+          {lite && <Education coursesOnly />}
           <Skills lite={lite} />
         </main>
       </Suspense>

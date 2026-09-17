@@ -83,7 +83,7 @@
   max-width: none;
   min-height: 0;
   margin: 0;
-  padding: 30px 0;
+  padding: 24px 0;
   background: none;
   color: inherit;
   border: 0;
@@ -141,11 +141,106 @@
   color: var(--lite-muted);
 }
 
+#inicio.portfolio-lite main .lite-role {
+  font-size: 1.1em;
+  color: var(--lite-muted);
+}
+
+#inicio.portfolio-lite .cv-experience-list {
+  display: grid;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#inicio.portfolio-lite .cv-experience-list article {
+  break-inside: avoid;
+}
+
+#inicio.portfolio-lite main .cv-experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: .9em;
+  color: var(--lite-muted);
+}
+
+#inicio.portfolio-lite .cv-experience-list ul {
+  list-style: disc;
+  padding-left: 1.2em;
+  margin: 0;
+}
+
+#inicio.portfolio-lite .cv-experience-list ul li + li {
+  margin-top: 4px;
+}
+
+#inicio.portfolio-lite .cv-skills {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+#inicio.portfolio-lite .cv-skills dt {
+  font-weight: 650;
+  color: var(--lite-heading);
+}
+
+#inicio.portfolio-lite .cv-skills dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+
 #inicio.portfolio-lite .lite-links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
-  margin-top: 24px;
+  margin-top: 8px;
+}
+
+#inicio.portfolio-lite main .cv-location {
+  margin-bottom: 8px;
+  color: var(--lite-muted);
+}
+
+#inicio.portfolio-lite .cv-education,
+#inicio.portfolio-lite .cv-courses {
+  margin: 0;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+#inicio.portfolio-lite .cv-education > li + li {
+  margin-top: 14px;
+}
+
+#inicio.portfolio-lite main .cv-education :is(h3, p) {
+  margin-bottom: 2px;
+}
+
+#inicio.portfolio-lite .cv-courses > li + li {
+  margin-top: 6px;
+}
+
+#inicio.portfolio-lite main .cv-education-date,
+#inicio.portfolio-lite main .cv-project-meta {
+  font-size: .9em;
+  color: var(--lite-muted);
+}
+
+#inicio.portfolio-lite .cv-project-meta::first-letter {
+  text-transform: uppercase;
+}
+
+#inicio.portfolio-lite .cv-courses span {
+  color: var(--lite-muted);
+}
+
+#inicio.portfolio-lite :is(.cv-education, .cv-courses) > li::marker {
+  color: var(--lite-accent);
 }
 
 #inicio.portfolio-lite main a {
@@ -200,32 +295,68 @@
 #inicio.portfolio-lite .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 18px;
+  margin-top: 0;
+}
+
+#inicio.portfolio-lite .project-card {
+  display: block;
+  padding-left: 1em;
+  break-inside: avoid;
+}
+
+#inicio.portfolio-lite main .project-card h3 {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+#inicio.portfolio-lite .project-card h3::before {
+  content: '•';
+  position: absolute;
+  left: -1em;
+  color: var(--lite-accent);
+}
+
+#inicio.portfolio-lite main .project-card > p {
+  margin-bottom: 6px;
 }
 
 #inicio.portfolio-lite .project-card:hover {
   transform: none;
 }
 
-#inicio.portfolio-lite .project-stack {
+#inicio.portfolio-lite .project-stack,
+#inicio.portfolio-lite .cv-concepts {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 14px;
-  margin: 12px 0;
+  gap: 2px 16px;
+  margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-#inicio.portfolio-lite .project-stack li {
+#inicio.portfolio-lite main .project-stack li,
+#inicio.portfolio-lite main .cv-concepts li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
   padding: 0;
   border: 0;
   background: none;
-  font-size: .8em;
+  font-size: .9em;
   color: var(--lite-muted);
 }
 
-#inicio.portfolio-lite .project-link {
+#inicio.portfolio-lite .project-stack li::before,
+#inicio.portfolio-lite .cv-concepts li::before {
+  content: '•';
+  flex: 0 0 auto;
+  color: var(--lite-accent);
+}
+
+#inicio.portfolio-lite main .project-link {
   display: inline-block;
-  margin: 0;
+  margin: 6px 0 0;
   font-size: .85em;
 }
 
