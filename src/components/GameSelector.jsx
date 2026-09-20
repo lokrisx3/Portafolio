@@ -30,10 +30,9 @@ function SelectorDialog({ onClose, onSelect, loading = false }) {
         <p>Una pausa, dos aventuras.</p>
         <div className="games-grid">
           <button type="button" className="games-card" onClick={() => onSelect('pudu')}>
-            <span className="games-art games-art--pudu" aria-hidden="true">🦌 <span>↑</span></span>
+            <img className="games-art games-art--pudu" src={`${import.meta.env.BASE_URL}pudu-runner-cover.svg`} alt="Un pudú pixelado saltando una roca entre árboles" />
             <span className="games-genre">01 / CARRERA INFINITA</span>
             <strong>Pudú Runner</strong>
-            <span>Salta obstáculos, recoge monedas y recorre el bosque.</span>
             <span className="games-play">JUGAR →</span>
           </button>
           <button type="button" className="games-card games-card--horror" onClick={() => onSelect('usunknown')}>

@@ -114,18 +114,8 @@
 }
 
 .games-art--pudu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    background: linear-gradient(#123243, #244e3b);
-    font-size: 58px;
-    border-bottom: 6px solid #8adc80;
-}
-
-.games-art--pudu span {
-    color: #8adc80;
-    font-size: 36px;
+    image-rendering: pixelated;
+    border-bottom: 6px solid #93b85d;
 }
 
 .games-genre {

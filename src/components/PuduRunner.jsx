@@ -201,16 +201,13 @@ export default function PuduRunner({ onClose }) {
 
   return (
     <dialog ref={dialog} className="pudu-dialog" aria-labelledby="pudu-title" onCancel={onClose}>
-      <div className="pudu-top"><span>ARCADE / 01</span><button type="button" onClick={onClose} aria-label="Cerrar Pudú Runner">✕</button></div>
-      <div className="pudu-heading"><div><p>UN PEQUEÑO HABITANTE DEL BOSQUE</p><h2 id="pudu-title">PUDÚ RUNNER<span>_</span></h2></div><span className="pudu-badge">PROTOTIPO</span></div>
-      <div className="pudu-scores"><span>DISTANCIA <b>{String(score).padStart(4, '0')} m</b></span><span>RÉCORD <b>{String(best).padStart(4, '0')} m</b></span></div>
-      <div className="pudu-economy"><span>◈ {progress.coins} monedas · {score % 100}/100 m</span><button type="button" onClick={toggleShop} aria-expanded={shop} aria-controls="pudu-shop">{shop ? 'VOLVER AL JUEGO' : 'TIENDA ◈'}</button></div>
+      <div className="pudu-top"><h2 id="pudu-title">PUDÚ RUNNER</h2><button type="button" onClick={onClose} aria-label="Cerrar Pudú Runner">✕</button></div>
+      <div className="pudu-status"><span aria-label={`Distancia ${score} metros`}>↗ {score} m</span><span aria-label={`Récord ${best} metros`}>★ {best} m</span><span aria-label={`${progress.coins} monedas`}>◈ {progress.coins}</span><button type="button" onClick={toggleShop} aria-expanded={shop} aria-controls="pudu-shop" aria-label={shop ? 'Volver al juego' : 'Abrir tienda'}>{shop ? '←' : '☰'}</button></div>
       <div className="pudu-stage" hidden={shop}>
         <canvas ref={canvas} width="800" height="320" tabIndex={0} onPointerDown={(event) => { event.currentTarget.focus(); jump() }} aria-label="Pudú Runner. Pulsa espacio, flecha arriba o toca para saltar sobre las rocas." />
-        {phase !== 'running' && <div className="pudu-overlay" aria-live="polite"><strong>{phase === 'over' ? '¡OTRO SALTO, OTRA AVENTURA!' : 'EL BOSQUE TE ESPERA'}</strong><span>{phase === 'over' ? `Recorriste ${score} metros. ¿Vamos otra vez?` : 'Salta las rocas y llega lo más lejos que puedas.'}</span></div>}
+        {phase === 'over' && <div className="pudu-overlay" aria-live="polite"><strong>{score} m</strong></div>}
       </div>
       <section id="pudu-shop" className="pudu-shop" hidden={!shop} aria-label="Tienda">
-        <p>Personaliza tu aventura · El juego está en pausa.</p>
         {[["skin", "Skins del pudú", SKINS, progress.ownedSkins], ["scene", "Escenarios", SCENES, progress.ownedScenes]].map(([type, title, items, owned]) => <div key={type}>
           <h3>{title}</h3><div className="pudu-shop-grid">{items.map(item => {
             const selected = progress[type] === item.id
@@ -223,8 +220,7 @@ export default function PuduRunner({ onClose }) {
           })}</div>
         </div>)}
       </section>
-      <div className="pudu-controls" hidden={shop}><p><kbd>ESPACIO</kbd> / <kbd>↑</kbd> o toca el bosque</p><button type="button" onClick={() => { jump(); canvas.current.focus() }}>{phase === 'ready' ? 'COMENZAR →' : phase === 'over' ? 'REINTENTAR ↻' : 'SALTAR ↑'}</button></div>
-      <p className="pudu-footnote">Cada 100 m en esta partida = 1 moneda · Recoge monedas doradas al saltar.<br />Progreso guardado en este navegador · Esc para salir</p>
+      <div className="pudu-controls" hidden={shop}><span><kbd>ESPACIO</kbd> / <kbd>↑</kbd></span><button type="button" onClick={() => { jump(); canvas.current.focus() }} aria-label={phase === 'ready' ? 'Comenzar' : phase === 'over' ? 'Reintentar' : 'Saltar'}>{phase === 'over' ? '↻' : '↑'}</button></div>
       {storageFailed && <p className="pudu-footnote" role="status">No se pudo guardar en localStorage. El progreso solo se conservará mientras el juego esté abierto.</p>}
     </dialog>
   )
