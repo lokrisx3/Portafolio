@@ -1,0 +1,33 @@
+.frio-dialog {
+    width: min(720px, calc(100% - 24px));
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    padding: clamp(20px, 5vw, 42px);
+    border: 1px solid #53656b;
+    color: #e5e4de;
+    background: radial-gradient(ellipse at 50% 0, #25343a 0, #111a1e 48%, #090e11 100%);
+    box-shadow: 0 24px 100px #000c;
+    font-family: 'Space Mono', monospace;
+}
+
+.frio-dialog::backdrop { background: #020508e8; backdrop-filter: blur(7px); }
+.frio-top { display: flex; align-items: center; justify-content: space-between; color: #a7b6b9; font-size: 10px; letter-spacing: .16em; }
+.frio-top button { width: 36px; height: 36px; border: 1px solid #53656b; color: #e5e4de; background: transparent; cursor: pointer; }
+.frio-dialog button:focus-visible { outline: 2px solid #b9d0d3; outline-offset: 4px; }
+.frio-eyebrow { margin: clamp(36px, 8vw, 70px) 0 4px; color: #a7b6b9; font-size: 9px; letter-spacing: .22em; }
+.frio-dialog h2 { margin: 0; color: #edece6; font: 400 clamp(44px, 10vw, 76px)/.9 'VT323', monospace; }
+.frio-dialog h2 span { color: #9eb5b8; }
+.frio-scene { max-width: 590px; min-height: 185px; margin: 38px auto 28px; animation: frio-appear .45s ease both; }
+.frio-scene h3 { color: #b9ccd0; font: 400 30px 'VT323', monospace; }
+.frio-scene p { color: #d1d4d0; font: 14px/2 'Space Mono', monospace; }
+.frio-word { display: inline; opacity: 0; animation: frio-word-in .035s ease-out calc(var(--word-index) * 32ms) forwards; }
+.frio-choices { display: grid; gap: 10px; }
+.frio-choices button { display: grid; grid-template-columns: 34px 1fr 20px; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; border: 1px solid #46585d; color: #e1e4df; background: #172226aa; font: 12px/1.6 'Space Mono', monospace; text-align: left; cursor: pointer; transition: background .2s, border-color .2s, transform .2s; }
+.frio-choices button:hover { transform: translateX(4px); border-color: #b9ccd0; background: #26373b; }
+.frio-choices button span { color: #82969a; font-size: 10px; }
+.frio-choices button b { color: #b9ccd0; }
+.frio-restart { padding: 13px 18px; border: 1px solid #aebfc0; color: #0c1417; background: #b9ccd0; font: 700 11px 'Space Mono', monospace; cursor: pointer; }
+.frio-dialog footer { margin-top: 42px; padding-top: 14px; border-top: 1px solid #ffffff19; color: #829397; font-size: 9px; letter-spacing: .04em; }
+@keyframes frio-appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes frio-word-in { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: blur(0); } }
+@media (prefers-reduced-motion: reduce) { .frio-scene { animation: none; } .frio-choices button { transition: none; } .frio-word { animation: none; opacity: 1; filter: none; } }

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cuatro soldados avanzan hacia un búnker en un bosque nevado</title>
+  <desc id="desc">Ilustración cinematográfica invernal con cuatro soldados de espaldas y la entrada iluminada de un búnker en el centro.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#111c25"/><stop offset=".58" stop-color="#65747a"/><stop offset="1" stop-color="#c4c8c3"/></linearGradient>
+    <linearGradient id="snow" x2="0" y2="1"><stop stop-color="#d1d4ce"/><stop offset="1" stop-color="#78888a"/></linearGradient>
+    <linearGradient id="door" x2="0" y2="1"><stop stop-color="#212a2b"/><stop offset="1" stop-color="#080c0d"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#e7c694" stop-opacity=".62"/><stop offset="1" stop-color="#e7c694" stop-opacity="0"/></radialGradient>
+    <linearGradient id="coat" x2="1" y2="1"><stop stop-color="#49554f"/><stop offset=".5" stop-color="#303b37"/><stop offset="1" stop-color="#1d2828"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2"/><feColorMatrix values=".5 0 0 0 .2 .5 0 0 0 .2 .5 0 0 0 .2 0 0 0 .09 0"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <ellipse cx="800" cy="570" rx="430" ry="230" fill="url(#glow)" filter="url(#soft)"/>
+  <path d="M0 390 180 145l85 224 167-303 173 308 158-255 114 256 178-321 150 320 155-227 240 300v270H0z" fill="#182329"/>
+  <path d="m180 145 85 224 167-303 38 69-105-3-65 104-28-37-35 81-28-59-34 82zM763 375l114-256 38 74-91 1-39 116-26-37zM1200 300l155-227 39 50-88-1-55 96-24-42-39 91z" fill="#bbc2bd" opacity=".68"/>
+  <path d="M0 485q150-90 304 0t306-3q170-104 339 1t328-5q166-81 323 7v240H0z" fill="#263337"/>
+  <g fill="#11191c" opacity=".96">
+    <path d="m67 618 55-442 53 442zm-36-200 40-20-9 18zm105-72 57 21-4 18-59-20zm49 96 44 18-3 17-45-18z"/>
+    <path d="m277 605 82-526 72 526zm-55-242 52-25-7 22zm150-120 67 29-5 18-70-27zm-5 176 67 27-5 20-70-27z"/>
+    <path d="m1189 600 78-501 77 501zm-53-270 51-25-8 22zm150-129 69 27-6 20-70-26zm-1 174 73 29-6 18-74-29z"/>
+    <path d="m1400 637 59-441 56 441zm-37-212 45-22-6 20zm111-103 65 24-5 19-67-24z"/>
+  </g>
+  <path d="M300 900q180-210 365-303 135-63 270 0 183 85 365 303z" fill="url(#snow)"/>
+  <path d="M530 900q96-210 177-323 47-67 93-67t93 67q81 113 177 323z" fill="#687779"/>
+  <path d="M628 900q42-195 88-319 32-84 84-84t84 84q46 124 88 319z" fill="#3a4648"/>
+  <path d="M674 900q35-176 68-291 20-67 58-67t58 67q33 115 68 291z" fill="url(#door)"/>
+  <path d="M676 899q35-182 68-296 21-70 56-70 39 0 59 70 33 114 67 296" fill="none" stroke="#aab1ac" stroke-width="13" opacity=".65"/>
+  <path d="M800 553v346m-57-256h114" stroke="#657171" stroke-width="7" opacity=".55"/>
+  <path d="M770 870h60" stroke="#b89b70" stroke-width="5" opacity=".65"/>
+  <g fill="#e4e8e4" opacity=".82"><path d="m305 737 190-83-62 83zM1090 729l186-101-71 100zM527 580l81-44-21 50zM999 551l88-38-28 49z"/></g>
+  <g fill="#ecf0ee" opacity=".55"><circle cx="211" cy="277" r="3"/><circle cx="489" cy="225" r="2"/><circle cx="1173" cy="319" r="3"/><circle cx="1380" cy="201" r="2"/><circle cx="984" cy="275" r="2"/><circle cx="638" cy="362" r="3"/><circle cx="93" cy="386" r="2"/></g>
+  <!-- Soldiers, all facing the bunker; coat and packs form distinct silhouettes. -->
+  <g stroke="#101719" stroke-width="8" stroke-linejoin="round">
+    <g transform="translate(420 0)">
+      <path d="M-29 686q-8-15-4-39l10-50q4-20 24-20t24 20l10 50q4 24-4 39l-8 52h-17l-7-45-8 45h-17z" fill="url(#coat)"/>
+      <path d="M-31 607q-23-8-19 28l3 43 18-3 8-55zm62 0q23-8 19 28l-3 43-18-3-8-55z" fill="#35413d"/>
+      <path d="M-25 588q-3-36 25-37t25 37l-13 14h-24z" fill="#333c3b"/><path d="M-26 558q2-31 28-31t27 31l-9 8h-38z" fill="#46514b"/>
+      <path d="M-20 610h40v39h-40z" fill="#50564a"/><path d="M-29 676h22m16 0h21" fill="none"/>
+      <path d="M29 624 47 650l-4 47" fill="none" stroke="#151b1c" stroke-width="9"/>
+      <path d="M-29 598h-27v62h27z" fill="#39443e"/><path d="M-26 608h21v41h-21z" fill="#586052"/>
+    </g>
+    <g transform="translate(650 0) scale(1.2)">
+      <path d="M-29 686q-8-15-4-39l10-50q4-20 24-20t24 20l10 50q4 24-4 39l-8 52h-17l-7-45-8 45h-17z" fill="url(#coat)"/>
+      <path d="M-31 607q-23-8-19 28l3 43 18-3 8-55zm62 0q23-8 19 28l-3 43-18-3-8-55z" fill="#35413d"/>
+      <path d="M-25 588q-3-36 25-37t25 37l-13 14h-24z" fill="#333c3b"/><path d="M-26 558q2-31 28-31t27 31l-9 8h-38z" fill="#46514b"/>
+      <path d="M-20 610h40v39h-40z" fill="#50564a"/><path d="M-29 676h22m16 0h21" fill="none"/>
+      <path d="M29 624 47 650l-4 47" fill="none" stroke="#151b1c" stroke-width="9"/>
+      <path d="M-29 598h-27v62h27z" fill="#39443e"/><path d="M-26 608h21v41h-21z" fill="#586052"/>
+    </g>
+    <g transform="translate(955 0) scale(1.16)">
+      <path d="M-29 686q-8-15-4-39l10-50q4-20 24-20t24 20l10 50q4 24-4 39l-8 52h-17l-7-45-8 45h-17z" fill="url(#coat)"/>
+      <path d="M-31 607q-23-8-19 28l3 43 18-3 8-55zm62 0q23-8 19 28l-3 43-18-3-8-55z" fill="#35413d"/>
+      <path d="M-25 588q-3-36 25-37t25 37l-13 14h-24z" fill="#333c3b"/><path d="M-26 558q2-31 28-31t27 31l-9 8h-38z" fill="#46514b"/>
+      <path d="M-20 610h40v39h-40z" fill="#50564a"/><path d="M-29 676h22m16 0h21" fill="none"/>
+      <path d="M29 624 47 650l-4 47" fill="none" stroke="#151b1c" stroke-width="9"/>
+      <path d="M-29 598h-27v62h27z" fill="#39443e"/><path d="M-26 608h21v41h-21z" fill="#586052"/>
+    </g>
+    <g transform="translate(1175 0)">
+      <path d="M-29 686q-8-15-4-39l10-50q4-20 24-20t24 20l10 50q4 24-4 39l-8 52h-17l-7-45-8 45h-17z" fill="url(#coat)"/>
+      <path d="M-31 607q-23-8-19 28l3 43 18-3 8-55zm62 0q23-8 19 28l-3 43-18-3-8-55z" fill="#35413d"/>
+      <path d="M-25 588q-3-36 25-37t25 37l-13 14h-24z" fill="#333c3b"/><path d="M-26 558q2-31 28-31t27 31l-9 8h-38z" fill="#46514b"/>
+      <path d="M-20 610h40v39h-40z" fill="#50564a"/><path d="M-29 676h22m16 0h21" fill="none"/>
+      <path d="M29 624 47 650l-4 47" fill="none" stroke="#151b1c" stroke-width="9"/>
+      <path d="M-29 598h-27v62h27z" fill="#39443e"/><path d="M-26 608h21v41h-21z" fill="#586052"/>
+    </g>
+  </g>
+  <rect width="1600" height="900" filter="url(#grain)" opacity=".28"/>
+  <rect x="2" y="2" width="1596" height="896" fill="none" stroke="#dbe1df" stroke-opacity=".16" stroke-width="4"/>
+</svg>

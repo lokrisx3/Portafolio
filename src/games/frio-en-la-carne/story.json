@@ -1,0 +1,74 @@
+{
+  "start": {
+    "title": "La casa respira",
+    "text": "El último bus te dejó a varios kilómetros del pueblo. La lluvia ya se ha vuelto nieve cuando encuentras la casa, oscura y familiar, al borde del camino. Tu hermana lleva tres días sin contestar. La puerta principal está entreabierta. Desde dentro llega un golpe suave, como alguien llamando desde abajo.",
+    "choices": [
+      ["door", "Entrar por la puerta principal"],
+      ["window", "Rodear la casa y mirar por la ventana"]
+    ]
+  },
+  "door": {
+    "title": "El recibidor",
+    "text": "El frío de adentro te muerde las manos. Sobre la mesa está la bufanda de tu hermana, todavía húmeda. Del sótano suben tres golpes. Entonces, desde el piso de arriba, su voz susurra tu nombre.",
+    "choices": [
+      ["stairs", "Subir hacia la voz"],
+      ["basement", "Abrir la puerta del sótano"]
+    ]
+  },
+  "window": {
+    "title": "Al otro lado del vidrio",
+    "text": "La ventana empañada se aclara desde dentro. Tu hermana está sentada en la cocina, de espaldas. En el reflejo, alguien se inclina sobre tu hombro. Te das vuelta: solo está el camino blanco. Al volver a mirar, ella tiene la palma apoyada en el vidrio.",
+    "choices": [
+      ["knock", "Golpear el vidrio para llamar su atención"],
+      ["door", "Entrar por la puerta principal"]
+    ]
+  },
+  "stairs": {
+    "title": "Una voz conocida",
+    "text": "La escalera cruje bajo tu peso. La voz viene del dormitorio, pero la puerta está cerrada. Desde el sótano llega otro golpe. En el bolsillo de la bufanda encuentras una llave pequeña, helada como si llevara horas enterrada en nieve.",
+    "choices": [
+      ["room", "Usar la llave en el dormitorio"],
+      ["basement", "Bajar con la llave al sótano"]
+    ]
+  },
+  "basement": {
+    "title": "Bajo la casa",
+    "text": "La llave gira sin resistencia. Los escalones descienden hacia una oscuridad demasiado quieta. Al fondo, tu hermana te espera junto a una puerta abierta en el suelo. «Llegaste», dice. Detrás de ella, algo respira con tu voz.",
+    "choices": [
+      ["follow", "Tomar su mano y seguirla"],
+      ["leave", "Retroceder y cerrar la puerta"]
+    ]
+  },
+  "knock": {
+    "title": "El vidrio",
+    "text": "Tu hermana no se mueve. El vidrio se empaña por el lado de afuera y aparece una frase escrita desde dentro: «No soy yo». Detrás de la casa, la puerta del sótano está abierta. Una luz tibia tiembla al fondo.",
+    "choices": [
+      ["basement", "Seguir la luz hacia el sótano"],
+      ["leave", "Alejarte por el camino nevado"]
+    ]
+  },
+  "room": {
+    "title": "El dormitorio",
+    "text": "La habitación está vacía, salvo por las marcas húmedas que cruzan el suelo y terminan en el armario. Desde dentro, tu hermana dice: «No abras. Lo que sea que te llamó no sabe cómo eres». La llave gira en la cerradura del armario.",
+    "choices": [
+      ["closet", "Abrir el armario"],
+      ["basement", "Volver y bajar al sótano"]
+    ]
+  },
+  "closet": {
+    "title": "Lo que recuerda",
+    "text": "Dentro no hay ropa. Hay nieve, hasta donde alcanza la vista. Alguien espera al otro lado: tu hermana, tal como la recuerdas, con la misma bufanda. «No puedo salir si no recuerdas mi cara», dice. La casa cruje alrededor de ti.",
+    "choices": [
+      ["follow", "Entrar en la nieve y tomar su mano"],
+      ["leave", "Cerrar el armario y buscar la salida"]
+    ]
+  },
+  "follow": {
+    "title": "La nieve bajo la casa",
+    "ending": "Le tomas la mano. Está tibia. Juntos cruzan la puerta y, por primera vez en días, la casa deja de respirar. Afuera amanece sobre el camino. Tu hermana camina a tu lado, y no miras atrás."
+  },
+  "leave": {
+    "title": "El camino de vuelta",
+    "ending": "Cierras la puerta. Algo golpea desde el otro lado, una y otra vez, hasta que sus golpes suenan como los tuyos. Caminas hacia las luces del pueblo. En el bolsillo, la bufanda sigue mojada y helada."
+  }
+}
