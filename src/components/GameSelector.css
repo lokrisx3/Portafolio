@@ -118,6 +118,14 @@
     border-bottom: 6px solid #93b85d;
 }
 
+.games-art--frio {
+    object-position: center 55%;
+}
+
+.games-card--frio .games-play { color: #b9ccd0; }
+
+.games-card--frio:hover { border-color: #b9ccd0; background: #1b292e; }
+
 .games-genre {
     font-size: 9px;
     letter-spacing: 1px;
