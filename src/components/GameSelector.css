@@ -84,6 +84,27 @@
     margin-top: 24px;
 }
 
+.games-sketch-preview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.games-sketch-preview figure { min-width: 0; margin: 0; }
+.games-sketch-thumb { position: relative; display: block; width: 100%; padding: 0; border: 1px solid #47665a; background: #06080e; cursor: zoom-in; }
+.games-sketch-thumb img { max-height: 38vh; }
+.games-sketch-thumb span { position: absolute; right: 8px; bottom: 8px; padding: 5px 8px; color: #eee9d8; background: #0b171ce8; font-size: 9px; letter-spacing: 1px; }
+.games-sketch-thumb:hover { border-color: #8adc80; }
+.sketch-viewer { position: fixed; z-index: 2; inset: 0; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; justify-items: center; gap: 12px; padding: 64px 24px 24px; background: #02050bf2; }
+.sketch-viewer figure { display: grid; justify-items: center; width: 100%; height: 100%; min-height: 0; margin: 0; }
+.sketch-viewer img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.sketch-viewer figcaption { padding-top: 8px; color: #a8bdb3; font-size: 10px; }
+.sketch-viewer button { color: #eee9d8; border: 1px solid #47665a; background: #0b171c; cursor: pointer; }
+.sketch-viewer__close { position: absolute; top: 16px; right: 18px; width: 40px; height: 40px; font-size: 24px; }
+.sketch-viewer__nav { width: 44px; height: 54px; font-size: 34px; }
+.sketch-viewer button:hover { border-color: #8adc80; color: #8adc80; }
+.games-sketch-preview img { display: block; width: 100%; max-height: 58vh; object-fit: contain; background: #06080e; }
+.games-sketch-preview figcaption { padding-top: 7px; color: #a8bdb3; font-size: 10px; }
+.games-card--amnein:hover { border-color: #bca2e6; background: #211d2c; }
+.games-card--amnein .games-play { color: #d0b7f5; }
+.games-card--amnein .games-coming-soon { color: #d0b7f5; font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+.games-art--amnein { object-position: center; }
+
 .games-card {
     display: flex;
     flex-direction: column;
@@ -155,4 +176,7 @@
     .games-grid {
         grid-template-columns: 1fr;
     }
+    .games-sketch-preview { grid-template-columns: 1fr; }
+    .sketch-viewer { gap: 6px; padding: 60px 8px 16px; }
+    .sketch-viewer__nav { width: 34px; height: 48px; }
 }

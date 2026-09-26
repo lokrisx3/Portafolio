@@ -1,5 +1,11 @@
 import TechSymbol from '../components/TechSymbol.jsx'
 import ProjectArtwork from '../components/ProjectArtwork.jsx'
+import { useState } from 'react'
+
+const gameImages = [
+  { src: '/docs/img/img/boceto1.png', alt: 'Primer boceto de Amnein' },
+  { src: '/docs/img/img/boceto2.png', alt: 'Segundo boceto de Amnein' },
+]
 
 const projects = [
   {
@@ -47,6 +53,7 @@ const projects = [
 ]
 
 function Projects({ lite = false }) {
+  const [showGameSketches, setShowGameSketches] = useState(false)
   return (
     <section className="projects-section" id="proyectos" aria-labelledby="projects-title">
       <div className="projects-heading">
@@ -77,6 +84,12 @@ function Projects({ lite = false }) {
           </article>
         ))}
       </div>
+      {showGameSketches && <div className="game-sketch-overlay" role="dialog" aria-modal="true" aria-label="Bocetos del juego Amnein" onClick={() => setShowGameSketches(false)}>
+        <div className="game-sketch-panel" onClick={event => event.stopPropagation()}>
+          <div className="game-sketch-heading"><div><span>EN DESARROLLO</span><h3>Bocetos de Amnein</h3></div><button type="button" onClick={() => setShowGameSketches(false)} aria-label="Cerrar bocetos">×</button></div>
+          <div className="game-sketch-images">{gameImages.map(image => <figure key={image.src}><img src={image.src} alt={image.alt} /><figcaption>{image.alt}</figcaption></figure>)}</div>
+        </div>
+      </div>}
     </section>
   )
 }
