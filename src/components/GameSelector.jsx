@@ -61,7 +61,7 @@ function SelectorDialog({ onClose, onSelect, loading = false, amnein = false }) 
             <span className="games-genre">04 / JUEGO EN DESARROLLO</span>
             <strong>Amnein</strong>
             <span className="games-coming-soon">PRÓXIMAMENTE</span>
-            <span>Aventura de terror psicológico en una mansión llena de misterios y recuerdos.</span>
+            <span>Beat ’em up pixel art ambientado en un Santiago distópico: cuatro personajes combaten por sus barrios con combos y habilidades especiales.</span>
             <span className="games-play">VER BOCETOS →</span>
           </button>
         </div>}
