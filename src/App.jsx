@@ -26,6 +26,8 @@ function App() {
       return ['light', 'reading', 'dark'].includes(saved) ? saved : 'light'
     } catch { return 'light' }
   })
+
+
   const changeLiteTheme = (theme) => {
     if (!['light', 'reading', 'dark'].includes(theme)) return
     setLiteTheme(theme)
