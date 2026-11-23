@@ -474,7 +474,7 @@ main>section:not(.about-section) h2 {
 
 @media(max-width:640px) {
     #root {
-        overflow: hidden
+        overflow-x: clip
     }
 
     .site-header {
