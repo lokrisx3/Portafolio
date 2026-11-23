@@ -6,6 +6,7 @@ import './themes.css'
 import './project-artwork.css'
 import './fiestas-patrias.css'
 import './intro.css'
+import './stack-scroll.css'
 import { applyTheme, getInitialTheme } from './theme.js'
 import App from './App.jsx'
 

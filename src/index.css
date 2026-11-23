@@ -28,7 +28,7 @@ body {
 #root {
     min-height: 100vh;
     padding-top: 60px;
-    overflow: hidden
+    overflow-x: clip
 }
 
 .site-header {

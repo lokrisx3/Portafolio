@@ -1,6 +1,7 @@
 import Header from './components/Header.jsx'
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { isFiestasPatrias } from './season'
+import { useLenisStack } from './hooks/useLenisStack.js'
 import './lite.css'
 
 const CONTENT_LOAD_TIMEOUT = 8000
@@ -67,12 +68,14 @@ function App() {
       document.removeEventListener('visibilitychange', refreshSeason)
     }
   }, [])
+  const { mainRef, stackActive, scrollToSection } = useLenisStack({ enabled: !lite })
+
   return (
-    <div id="inicio" data-fiestas={!lite && fiestas} data-lite-theme={lite ? liteTheme : undefined} className={lite ? 'portfolio-lite' : undefined} style={lite ? { '--lite-font-size': `${liteFontSize}px` } : undefined}>
-      <Header lite={lite} onToggleLite={toggleLite} liteFontSize={liteFontSize} onLiteFontSizeChange={changeLiteFontSize} liteTheme={liteTheme} onLiteThemeChange={changeLiteTheme} />
+    <div id="inicio" data-fiestas={!lite && fiestas} data-lite-theme={lite ? liteTheme : undefined} className={lite ? 'portfolio-lite' : stackActive ? 'portfolio-stack' : undefined} style={lite ? { '--lite-font-size': `${liteFontSize}px` } : undefined}>
+      <Header lite={lite} onToggleLite={toggleLite} liteFontSize={liteFontSize} onLiteFontSizeChange={changeLiteFontSize} liteTheme={liteTheme} onLiteThemeChange={changeLiteTheme} onNavigate={scrollToSection} />
 
       <Suspense fallback={<LoadingScreen timedOut={contentLoadTimedOut} />}>
-        <main>
+        <main ref={mainRef}>
           <About fiestas={fiestas} lite={lite} />
           <ProfessionalAbout lite={lite} />
           {lite && <Education />}

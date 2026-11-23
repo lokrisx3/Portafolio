@@ -11,7 +11,7 @@ const navigation = [
   { label: 'HABILIDADES', target: 'habilidades' },
 ]
 
-function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeChange, liteTheme = 'light', onLiteThemeChange }) {
+function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeChange, liteTheme = 'light', onLiteThemeChange, onNavigate }) {
   const [gamesOpen, setGamesOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
@@ -86,7 +86,16 @@ function Header({ lite = false, onToggleLite, liteFontSize = 16, onLiteFontSizeC
       </button>
       <nav className={isMenuOpen ? 'is-open' : ''} id="main-navigation" aria-label="Navegación principal">
         {navigation.map(({ label, target }, index) => (
-          <a className={activeSection === target ? 'active' : ''} aria-current={activeSection === target ? 'location' : undefined} href={`#${target}`} key={target} onClick={() => setIsMenuOpen(false)}>
+          <a
+            className={activeSection === target ? 'active' : ''}
+            aria-current={activeSection === target ? 'location' : undefined}
+            href={`#${target}`}
+            key={target}
+            onClick={(event) => {
+              setIsMenuOpen(false)
+              if (onNavigate?.(target)) event.preventDefault()
+            }}
+          >
             <b>[0{index + 1}]</b> <span className="nav-label">{lite && target === 'sobre-mi' ? 'PERFIL' : label}</span>
           </a>
         ))}
