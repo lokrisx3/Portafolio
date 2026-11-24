@@ -38,7 +38,7 @@ export function useLenisStack({ enabled }) {
 
     const getSections = () => Array.from(mainEl.querySelectorAll(':scope > section'))
 
-    const updateStickyOffsets = () => {
+    const syncLayout = () => {
       const sections = getSections()
       const viewportHeight = window.innerHeight
       sections.forEach((section, index) => {
@@ -49,32 +49,8 @@ export function useLenisStack({ enabled }) {
         const stickyTop = Math.min(HEADER_HEIGHT, viewportHeight - section.offsetHeight)
         section.style.setProperty('--stack-top', `${Math.round(stickyTop)}px`)
       })
-    }
-
-    const updateDepth = () => {
-      const sections = getSections()
-      const viewportHeight = window.innerHeight
-      const travel = Math.max(1, viewportHeight - HEADER_HEIGHT)
-
-      sections.forEach((section, index) => {
-        const next = sections[index + 1]
-        if (!next) {
-          section.style.setProperty('--stack-progress', '0')
-          return
-        }
-        const nextTop = next.getBoundingClientRect().top
-        const progress = Math.min(1, Math.max(0, (viewportHeight - nextTop) / travel))
-        section.style.setProperty('--stack-progress', progress.toFixed(4))
-      })
-    }
-
-    const syncLayout = () => {
-      updateStickyOffsets()
-      updateDepth()
       lenis.resize()
     }
-
-    lenis.on('scroll', updateDepth)
 
     let rafId = 0
     const raf = (time) => {
@@ -103,14 +79,12 @@ export function useLenisStack({ enabled }) {
     bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] })
 
     window.addEventListener('resize', syncLayout)
-    window.addEventListener('scroll', updateDepth, { passive: true })
     window.visualViewport?.addEventListener('resize', syncLayout)
     syncLayout()
 
     return () => {
       window.cancelAnimationFrame(rafId)
       window.removeEventListener('resize', syncLayout)
-      window.removeEventListener('scroll', updateDepth)
       window.visualViewport?.removeEventListener('resize', syncLayout)
       resizeObserver.disconnect()
       mutationObserver.disconnect()
@@ -120,7 +94,6 @@ export function useLenisStack({ enabled }) {
       html.classList.remove('lenis-active')
       getSections().forEach((section) => {
         section.style.removeProperty('--stack-top')
-        section.style.removeProperty('--stack-progress')
       })
     }
   }, [active, mainEl])

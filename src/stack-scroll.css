@@ -10,7 +10,6 @@ html.lenis-active {
   position: sticky;
   top: var(--stack-top, 60px);
   z-index: 1;
-  transform-origin: center bottom;
 }
 
 .portfolio-stack main > section:nth-child(2) {
@@ -29,30 +28,9 @@ html.lenis-active {
   z-index: 5;
 }
 
-/* Depth effect: outgoing sections slightly scale down and dim as the next section covers them. */
-.portfolio-stack main > section:not(:last-child) {
-  transform: translate3d(0, 0, 0) scale(calc(1 - var(--stack-progress, 0) * 0.045));
-  filter: brightness(calc(1 - var(--stack-progress, 0) * 0.42));
-  will-change: transform, filter;
-  backface-visibility: hidden;
-}
-
-/* Rising sections cast a soft top shadow to reinforce the layered overlap. */
-.portfolio-stack main > section:not(:first-child) {
-  box-shadow: 0 -24px 56px rgba(0, 0, 0, 0.62);
-}
-
-[data-theme='light'] .portfolio-stack main > section:not(:first-child) {
-  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.22);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .portfolio-stack main > section {
     position: relative;
     top: auto;
-    transform: none;
-    filter: none;
-    box-shadow: none;
-    will-change: auto;
   }
 }
