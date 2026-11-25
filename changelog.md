@@ -4,6 +4,19 @@ Registro histórico de cambios del proyecto generado a partir del historial de c
 
 ---
 
+## [2026-11-12 a 2026-11-25] — Scroll Suave con Lenis, Superposición de Secciones y Documentación
+
+### Agregado
+- **Scroll suave y superposición de secciones con Lenis** (`c519f6e`, `1ed0fad` — 2026-11-22): Incorporación de `lenis`, hook `src/hooks/useLenisStack.js` y hoja de estilos `src/stack-scroll.css` para desplazamiento suave con apilamiento `sticky` entre secciones, navegación precisa desde `Header.jsx`, pausa automática al abrir modales/juegos y desactivación en Modo CV o con `prefers-reduced-motion`.
+- **Registro histórico de cambios** (`195fb85` — 2026-11-12): Creación de `changelog.md` con el historial estructurado del repositorio.
+
+### Modificado / Corregido
+- **Actualización de documentación (`README.md` y `changelog.md`)** (2026-11-25): Documentación del Modo CV, selector Arcade (*Pudú Runner*, *usUnknown*, *Frío en la carne* y *Amnein*), temática estacional, integración de Lenis, scripts de desarrollo local y estructura actualizada del proyecto.
+- **Nitidez visual en superposición de secciones** (`06f4f2a` — 2026-11-23): Eliminación del oscurecimiento, escalado y sombra difuminada en `src/stack-scroll.css` y simplificación de `useLenisStack.js` para mantener intacta la nitidez del pixel art y la tipografía.
+- **Transición de secciones en dispositivos móviles** (`1cbe556` — 2026-11-22): Cambio de `overflow: hidden` a `overflow-x: clip` en móvil (`src/index.css`), activación de `syncTouch` en Lenis y sincronización con `visualViewport`.
+
+---
+
 ## [2026-09-20 a 2026-09-28] — Nuevos Juegos, Arcade y Pulido Visual
 
 ### Agregado
@@ -89,6 +102,11 @@ Registro histórico de cambios del proyecto generado a partir del historial de c
 
 | Fecha | Commit | Autor | Mensaje |
 | :--- | :--- | :--- | :--- |
+| 2026-11-23 | `06f4f2a` | lokrisx3 | se quita desenfoque |
+| 2026-11-22 | `1ed0fad` | lokrisx3 | Agrega hook y estilos de Lenis faltantes |
+| 2026-11-22 | `1cbe556` | lokrisx3 | transicion movil |
+| 2026-11-22 | `c519f6e` | lokrisx3 | Se aplica transicion lenis en desktop |
+| 2026-11-12 | `195fb85` | lokrisx3 | changelog historico |
 | 2026-09-28 | `44abc41` | lokrisx3 | responsive visor |
 | 2026-09-27 | `136b3f0` | lokrisx3 | fix descripcion |
 | 2026-09-26 | `35a7591` | lokrisx3 | Proximamente |
